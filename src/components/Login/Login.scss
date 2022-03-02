@@ -1,0 +1,15 @@
+.member-service-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 373px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  text-align: left;
+  padding: 0 34px;
+  background-color: #fff;
+  font-weight: 300;
+  //아래는 나중에 지우기
+  border: 1px solid;
+}
