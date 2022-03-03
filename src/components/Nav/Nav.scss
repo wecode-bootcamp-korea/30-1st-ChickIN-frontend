@@ -35,10 +35,8 @@
   position: fixed;
   display: flex;
   width: 100%;
-  /*자동으로 왼쪽 기준으로 정렬한다. */
   justify-content: space-between;
   background-color: lightblue;
-  /* background-color: var(--color-pink); */
   color: var(--color-black);
   padding: 15px;
   transition: all var(--animation-duration) ease-in-out;
@@ -55,12 +53,13 @@
   .nav_service_menu {
     display: flex;
     justify-content: center;
+    text-decoration: none;
     align-items: center;
     background-color: pink;
     width: 65%;
-    border: none;
     margin: 0px;
     padding: 0px;
+    border: 1px solid black;
 
     .nav_service_list {
       display: flex;
@@ -69,14 +68,41 @@
       list-style: none;
       margin: 0;
       padding: 0;
-    }
 
-    .nav_service_item {
-      padding: 8px 12px;
-      margin: 0 10px;
-      font-size: var(--font-regular);
-      cursor: pointer;
-      border-radius: var(--size-border-radius);
+      .nav_service_item {
+        padding: 8px 12px;
+        margin: 0 10px;
+        font-size: var(--font-regular);
+        cursor: pointer;
+        border-radius: var(--size-border-radius);
+
+        &:hover .drop_down_menu {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .drop_down_menu {
+          position: absolute;
+          background-color: purple;
+          opacity: 0;
+          visibility: hidden;
+          & li {
+            padding: 16px 28px;
+            border-bottom: 1px solid black;
+
+            & a {
+              color: royalblue;
+              text-decoration: none;
+            }
+          }
+        }
+
+        & a {
+          display: block;
+          padding: 8px 16px;
+          text-align: center;
+        }
+      }
     }
   }
 
