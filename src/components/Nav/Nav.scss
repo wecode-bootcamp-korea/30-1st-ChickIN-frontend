@@ -1,0 +1,95 @@
+/* Global */
+:root {
+  /* Color */
+  --color-white: #ffffff;
+  --color-light-white: #eeeeee;
+  --color-dark-white: #bdbdbd;
+  --color-pink: #fe918d;
+  --color-dark-pink: #ff6863;
+  --color-dark-grey: #d1c5c5;
+  --color-grey: #616161;
+  --color-light-grey: #7c7979;
+  --color-blue: #9cd3f8;
+  --color-yellow: #fff7d1;
+  --color-orange: #c47b0e;
+  --color-black: #000000;
+
+  /* Font size */
+  --font-large: 48px;
+  --font-medium: 32px;
+  --font-regular: 18px;
+  --font-small: 16px;
+  --font-micro: 14px;
+
+  /* Font weight */
+  --weight-bold: 700;
+  --weight-semi-bold: 600;
+  --weight-regular: 400;
+  /* Size */
+  --size-border-radius: 4px;
+  /* Annimation */
+  --animation-duration: 300ms;
+}
+
+.nav {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  /*자동으로 왼쪽 기준으로 정렬한다. */
+  justify-content: space-between;
+  background-color: lightblue;
+  /* background-color: var(--color-pink); */
+  color: var(--color-black);
+  padding: 15px;
+  transition: all var(--animation-duration) ease-in-out;
+  z-index: 1;
+  /* navbar 은 무슨일이있어도 제일 위에있어야되니까. z-index 1  */
+
+  .nav_logo {
+    font-size: var(--font-medium);
+    font-weight: var(--weight-semi-bold);
+    width: 15%;
+    margin: 14px 10px;
+  }
+
+  .nav_service_menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: pink;
+    width: 65%;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+
+    .nav_service_list {
+      display: flex;
+      align-items: center;
+      height: 100px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav_service_item {
+      padding: 8px 12px;
+      margin: 0 10px;
+      font-size: var(--font-regular);
+      cursor: pointer;
+      border-radius: var(--size-border-radius);
+    }
+  }
+
+  .nav_user_menu {
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+    align-items: center;
+    background-color: Green;
+    padding: 8px 24px;
+    margin: 0 4px;
+    font-size: 25px;
+    cursor: pointer;
+    border-radius: var(--size-border-radius);
+  }
+}
