@@ -34,6 +34,7 @@ const Login = () => {
       return alert('일치하는 회원정보가 없습니다');
     }
   };
+
   return (
     <div className="Login">
       <div className="login-header">
@@ -71,7 +72,9 @@ const Login = () => {
               로그인 하기
             </button>
           </div>
-          <a className="sign-up">ChickIN 계정이 없으신가요? 계정을 만드세요!</a>
+          <a href="/sign-up" className="sign_up-button">
+            ChickIN 계정이 없으신가요? 계정을 만드세요!
+          </a>
         </form>
       </div>
     </div>

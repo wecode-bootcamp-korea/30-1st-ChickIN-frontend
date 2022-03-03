@@ -13,19 +13,30 @@
 
   .login-header {
     display: flex;
-    justify-content: center;
-    padding: 40px;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    width: 330px;
+    padding: 40px 0px;
+
+    .login-button-close {
+      background-image: url('../../assets/buttonClose.png');
+      background-size: cover;
+      width: 18px;
+      height: 18px;
+    }
+
     .login-title {
       display: flex;
-      justify-content: center;
       align-items: center;
+      padding-right: 100px;
       font-family: 'Noto Sans KR', sans-serif;
       font-size: 17px;
       font-weight: 300;
     }
   }
   .login-body {
-    padding: 0 34px 100px 34px;
+    padding: 0 34px 90px 34px;
     margin: 0 -34px;
     .welcome-text {
       padding-bottom: 21px;
@@ -69,13 +80,13 @@
         line-height: 25px;
         cursor: pointer;
       }
-      .sign-up {
+      .sign_up {
         display: flex;
         justify-content: center;
-        padding-top: 12px;
+        padding-top: 15px;
         margin-left: 5px;
         font-family: 'Noto Sans KR', sans-serif;
-        font-size: 14px;
+        font-size: 13px;
         text-decoration: underline;
         cursor: pointer;
       }
