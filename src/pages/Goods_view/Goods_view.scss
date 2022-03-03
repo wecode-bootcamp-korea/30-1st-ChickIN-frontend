@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+}
+
+.product_detail_container {
+  .inner_wrap {
+    padding: 35px 20px 35px 20px;
+
+    .detail_top {
+      display: flex;
+      justify-content: space-around;
+
+      .detail_left {
+        flex: 1;
+        width: 100%;
+        max-width: 550px;
+      }
+
+      .detail_right {
+        flex: 1;
+        width: 100%;
+        max-width: 550px;
+
+        .detail_information {
+          .detail_information_title {
+            font-size: 28px;
+          }
+        }
+
+        .detail_information_wrapper {
+          .product_price_wrapper {
+            padding-bottom: 15px;
+
+            .product_discount {
+              .discount_price {
+                padding-right: 8px;
+                font-weight: bold;
+                font-size: 24px;
+                color: blue;
+              }
+
+              .old_price {
+                font-size: 24px;
+                text-decoration-line: line-through;
+                color: #b4b4b4;
+              }
+            }
+            .product_new_price {
+              font-size: 28px;
+              color: #333333;
+            }
+          }
+        }
+
+        .product_description {
+          border-top: 2px solid black;
+          border-bottom: 2px solid black;
+          padding: 15px 0 15px 0;
+        }
+
+        .product_option {
+          padding-top: 32px;
+          padding-bottom: 32px;
+
+          .choice_number_option {
+            padding-bottom: 10px;
+
+            select {
+              width: 100%;
+              height: 50px;
+              font-size: 16px;
+              font-weight: 400;
+              text-align: center;
+            }
+          }
+
+          .choice_add_option {
+            select {
+              width: 100%;
+              height: 50px;
+              font-size: 16px;
+              font-weight: 400;
+              text-align: center;
+            }
+          }
+
+          .option_total_area {
+            border: 1px solid black;
+            padding: 15px;
+            margin-top: 15px;
+            .order_product_option_display_area {
+              display: flex;
+              justify-content: space-between;
+              .product_name {
+                font-weight: bold;
+              }
+
+              .product_price {
+                text-align: right;
+                .product_count {
+                  input {
+                    width: 50px;
+                    text-align: center;
+                    color: #3f3f3f;
+                  }
+                  span {
+                    button {
+                    }
+                  }
+                }
+                em {
+                  padding-left: 15px;
+                  color: #333;
+                  text-align: right;
+                  vertical-align: middle;
+                }
+              }
+            }
+          }
+
+          .buy_button_wrapper {
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+
+            button {
+              width: 45%;
+              height: 40px;
+              background-color: transparent;
+              color: inherit;
+            }
+          }
+
+          .total_price {
+            text-align: right;
+            padding: 40px 0 0;
+            p {
+              font-size: 20px;
+              font-weight: 300;
+              strong {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+img {
+  width: 100%;
+}
