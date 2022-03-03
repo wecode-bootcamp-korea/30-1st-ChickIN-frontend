@@ -80,28 +80,49 @@
           opacity: 1;
           visibility: visible;
         }
+      }
 
-        .drop_down_menu {
-          position: absolute;
-          background-color: purple;
-          opacity: 0;
-          visibility: hidden;
-          & li {
-            padding: 16px 28px;
-            border-bottom: 1px solid black;
+      & a {
+        display: flex;
+        padding: 8px 16px;
+        text-align: center;
+      }
+    }
+  }
 
-            & a {
-              color: royalblue;
-              text-decoration: none;
-            }
-          }
-        }
+  .drop_down_menu {
+    position: absolute;
+    background-color: black;
+    opacity: 0;
+    visibility: hidden;
+    & li {
+      padding: 16px 28px;
+      border-bottom: 1px solid black;
 
-        & a {
-          display: block;
-          padding: 8px 16px;
-          text-align: center;
-        }
+      & a {
+        color: royalblue;
+        text-decoration: none;
+      }
+    }
+
+    &:hover .drop_down_menu_under_chicken {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  .drop_down_menu_under_chicken {
+    // position: absolute;
+    background-color: yellow;
+    opacity: 0;
+    visibility: hidden;
+    & li {
+      padding: 16px 28px;
+      border-bottom: 1px solid black;
+
+      & a {
+        color: green;
+        text-decoration: none;
       }
     }
   }

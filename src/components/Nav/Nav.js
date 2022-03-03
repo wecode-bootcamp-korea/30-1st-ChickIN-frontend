@@ -20,7 +20,17 @@ function Nav() {
             <a href="#">구매</a>
             <ul className="drop_down_menu">
               <li className="meat_option">
-                <a href="#">닭고기</a>
+                <a href="#" className="chicken">
+                  닭고기
+                </a>
+                <ul className="drop_down_menu_under_chicken">
+                  <li>
+                    <a href="#">구이용</a>
+                  </li>
+                  <li>
+                    <a href="#">요리용</a>
+                  </li>
+                </ul>
               </li>
               <li className="meat_option">
                 <a href="#">오리고기</a>
