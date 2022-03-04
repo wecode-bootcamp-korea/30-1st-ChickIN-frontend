@@ -19,11 +19,9 @@ const Login = () => {
   const updatePw = e => {
     setPwValue(e.target.value);
   };
-  console.log(pwValue);
 
   const submitHandler = e => {
     e.preventDefault();
-    console.log('submit');
 
     fetch('http://10.58.63.9:8000/users/login', {
       method: 'POST',
