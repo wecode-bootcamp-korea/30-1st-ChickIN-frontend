@@ -19,13 +19,11 @@ const Login = () => {
   const updatePw = e => {
     setPwValue(e.target.value);
   };
-  console.log(pwValue);
 
   const submitHandler = e => {
     e.preventDefault();
-    console.log('submit');
 
-    fetch('http://10.58.63.9:8000/users/login', {
+    fetch('http://10.58.6.237:8000/users/login', {
       method: 'POST',
       body: JSON.stringify({
         email: idValue,
@@ -36,6 +34,7 @@ const Login = () => {
       .then(result => {
         if (result.message === 'SUCCESS') {
           alert('로그인 성공!');
+          console.log(result);
           // Navigate('/Main');
         } else {
           alert('가입된 회원 정보가 없습니다');
