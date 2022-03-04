@@ -15,7 +15,7 @@
   background: #fff;
 }
 
-@mixin box-left {
+@mixin box_left {
   background-color: #f9f9f9;
   width: 165px;
   display: flex;
@@ -23,7 +23,7 @@
   justify-content: center;
 }
 
-@mixin box-left-h2 {
+@mixin box_left_h2 {
   background-color: #f9f9f9;
   width: 165px;
   display: flex;
@@ -32,6 +32,16 @@
   font-size: 13px;
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: bold;
+}
+
+@mixin button_default {
+  width: 203px;
+  height: 55px;
+  line-height: 53px;
+  font-size: 14px;
+  border: 0.9px solid black;
+  cursor: pointer;
+  margin-top: 50px;
 }
 
 .signup {
@@ -63,113 +73,127 @@
           font-family: 'Noto Sans KR', sans-serif;
         }
       }
-      .signup-form {
+      .button {
         display: flex;
         justify-content: center;
-        .signup-content {
-          .id-box {
+        .cancel {
+          @include button_default();
+          background-color: #fff;
+        }
+        .signup_submit {
+          @include button_default();
+          background-color: #000;
+          color: #fff;
+          font-weight: bold;
+        }
+      }
+      .signup_form {
+        display: flex;
+        justify-content: center;
+        .signup_content {
+          .id_box {
             margin-top: 80px;
             border-top: 1px solid #000;
             @include box;
-            .id-left {
-              @include box-left;
+            .id_left {
+              @include box_left;
               h3 {
-                @include box-left-h2;
+                @include box_left_h2;
               }
             }
-            .id-right {
+            .id_right {
               padding: 12px 20px;
-              .id-input {
+              .id_input {
                 @include input();
               }
             }
           }
-          .pw-box {
+          .pw_box {
             @include box;
-            .pw-left {
-              @include box-left;
+            .pw_left {
+              @include box_left;
               h3 {
-                @include box-left-h2;
+                @include box_left_h2;
               }
             }
-            .pw-right {
+            .pw_right {
               padding: 12px 20px;
-              .pw-input {
+              .pw_input {
                 @include input();
               }
             }
           }
-          .pw-check-box {
+          .pw_check_box {
             @include box;
-            .pw-check-left {
-              @include box-left;
+            .pw_check_left {
+              @include box_left;
               h3 {
-                @include box-left-h2;
+                @include box_left_h2;
               }
             }
-            .pw-check-right {
+            .pw_check_right {
               padding: 12px 20px;
-              .pw-check-input {
+              .pw_check_input {
                 @include input();
               }
             }
           }
-          .name-box {
+          .name_box {
             @include box;
-            .name-left {
-              @include box-left;
+            .name_left {
+              @include box_left;
               h3 {
-                @include box-left-h2;
+                @include box_left_h2;
               }
             }
-            .name-right {
+            .name_right {
               padding: 12px 20px;
-              .name-input {
+              .name_input {
                 @include input();
               }
             }
           }
-          .email-box {
+          .email_box {
             @include box;
-            .email-left {
-              @include box-left;
+            .email_left {
+              @include box_left;
               h3 {
-                @include box-left-h2;
+                @include box_left_h2;
               }
             }
-            .email-right {
+            .email_right {
               padding: 12px 20px;
-              .email-input {
+              .email_input {
                 @include input();
               }
             }
           }
-          .phone-number-box {
+          .phone_number_box {
             @include box;
-            .phone-number-left {
-              @include box-left;
+            .phone_number_left {
+              @include box_left;
               h3 {
-                @include box-left-h2;
+                @include box_left_h2;
               }
             }
-            .phone-number-right {
+            .phone_number_right {
               padding: 12px 20px;
-              .phone-number-input {
+              .phone_number_input {
                 @include input();
               }
             }
           }
-          .address-box {
+          .address_box {
             @include box;
-            .address-left {
-              @include box-left;
+            .address_left {
+              @include box_left;
               h3 {
-                @include box-left-h2;
+                @include box_left_h2;
               }
             }
-            .address-right {
+            .address_right {
               padding: 12px 20px;
-              .address-input {
+              .address_input {
                 @include input();
               }
             }

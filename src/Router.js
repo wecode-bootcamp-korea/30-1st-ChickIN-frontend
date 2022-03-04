@@ -6,7 +6,7 @@ import Main from './pages/Main/Main';
 import GoodsList from './pages/Goods_list/GoodsList';
 import GoodsView from './pages/Goods_view/GoodsView';
 import Login from './components/Login/Login';
-import SignUp from './components/Signup/Signup';
+import Signup from './components/Signup/Signup';
 
 function Router() {
   return (
@@ -15,7 +15,7 @@ function Router() {
       <Routes>
         <Route path="/main" element={<Main />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/goodslist" element={<GoodsList />} />
         <Route path="/goodsview" element={<GoodsView />} />
       </Routes>

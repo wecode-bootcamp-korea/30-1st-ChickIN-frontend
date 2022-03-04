@@ -2,12 +2,6 @@ import React, { useState } from 'react';
 // import { Navigate } from 'react-router-dom';
 import './Login.scss';
 
-// const ID = 'hslee72@gmail.com';
-// const PW = '1234';
-
-// let regExp =
-//   /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-
 const Login = () => {
   const [idValue, setIdValue] = useState('');
   const [pwValue, setPwValue] = useState('');

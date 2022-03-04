@@ -9,72 +9,72 @@ const SignUp = () => {
           <div className="top">
             <h2>회원가입</h2>
           </div>
-          <div className="signup-form">
-            <form className="signup-content">
-              <div className="id-box">
-                <div className="id-left">
+          <div className="signup_form">
+            <form className="signup_content">
+              <div className="id_box">
+                <div className="id_left">
                   <h3 className="id">아이디</h3>
                 </div>
-                <div className="id-right">
-                  <input className="id-input" />
+                <div className="id_right">
+                  <input className="id_input" />
                 </div>
               </div>
-              <div className="pw-box">
-                <div className="pw-left">
+              <div className="pw_box">
+                <div className="pw_left">
                   <h3 className="pw">비밀번호</h3>
                 </div>
-                <div className="pw-right">
-                  <input type="password" className="pw-input" />
+                <div className="pw_right">
+                  <input type="password" className="pw_input" />
                 </div>
               </div>
-              <div className="pw-check-box">
-                <div className="pw-check-left">
-                  <h3 className="pw-check">비밀번호 확인</h3>
+              <div className="pw_check_box">
+                <div className="pw_check_left">
+                  <h3 className="pw_check">비밀번호 확인</h3>
                 </div>
-                <div className="pw-check-right">
-                  <input type="password" className="pw-check-input" />
+                <div className="pw_check_right">
+                  <input type="password" className="pw_check_input" />
                 </div>
               </div>
-              <div className="name-box">
-                <div className="name-left">
+              <div className="name_box">
+                <div className="name_left">
                   <h3 className="name">이름</h3>
                 </div>
-                <div className="name-right">
-                  <input className="name-input" />
+                <div className="name_right">
+                  <input className="name_input" />
                 </div>
               </div>
-              <div className="email-box">
-                <div className="email-left">
+              <div className="email_box">
+                <div className="email_left">
                   <h3 className="email">이메일</h3>
                 </div>
-                <div className="email-right">
-                  <input className="email-input" />
+                <div className="email_right">
+                  <input className="email_input" />
                 </div>
               </div>
-              <div className="phone-number-box">
-                <div className="phone-number-left">
-                  <h3 className="phone-number">휴대폰 번호</h3>
+              <div className="phone_number_box">
+                <div className="phone_number_left">
+                  <h3 className="phone_number">휴대폰 번호</h3>
                 </div>
-                <div className="phone-number-right">
+                <div className="phone_number_right">
                   <input
-                    className="phone-number-input"
+                    className="phone_number_input"
                     placeholder="- 없이 입력하세요."
                   />
                 </div>
               </div>
-              <div className="address-box">
-                <div className="address-left">
+              <div className="address_box">
+                <div className="address_left">
                   <h3 className="address">주소</h3>
                 </div>
-                <div className="address-right">
-                  <input className="address-input" />
+                <div className="address_right">
+                  <input className="address_input" />
                 </div>
               </div>
             </form>
           </div>
           <div className="button">
             <button className="cancel">취소</button>
-            <button className="signup-submit">회원가입</button>
+            <button className="signup_submit">회원가입</button>
           </div>
         </div>
       </div>
