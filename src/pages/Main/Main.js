@@ -1,11 +1,7 @@
 import Nav from '../../components/Nav/Nav';
 
 function Main() {
-  return (
-    <>
-      <Nav />
-    </>
-  );
+  return <></>;
 }
 
 export default Main;
