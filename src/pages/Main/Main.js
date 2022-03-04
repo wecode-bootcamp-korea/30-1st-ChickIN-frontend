@@ -1,10 +1,9 @@
 function Main() {
-  return <></>;
+  return (
+    <>
+      <Nav />
+    </>
+  );
 }
 
 export default Main;
-
-{
-  /* <Route path="/nav" element={<Nav />} />
-import Nav from './components/Nav/Nav'; */
-}

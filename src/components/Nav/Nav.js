@@ -79,3 +79,8 @@ function Nav() {
   );
 }
 export default Nav;
+
+{
+  /* <Route path="/nav" element={<Nav />} />
+import Nav from './components/Nav/Nav'; */
+}

@@ -1,5 +1,5 @@
-function Good_view() {
+function Goods_view() {
   return <></>;
 }
 
-export default Good_view;
+export default Goods_view;

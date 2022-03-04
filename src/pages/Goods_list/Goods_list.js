@@ -1,4 +1,6 @@
-function Good_list() {
+import './Goods_list.scss';
+
+function Goods_list() {
   return <></>;
 }
 
