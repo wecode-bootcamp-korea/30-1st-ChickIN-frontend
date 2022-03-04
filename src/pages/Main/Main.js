@@ -1,5 +1,11 @@
+import Nav from '../../components/Nav/Nav';
+
 function Main() {
-  return <></>;
+  return (
+    <>
+      <Nav />
+    </>
+  );
 }
 
 export default Main;
