@@ -1,9 +1,9 @@
 import React from 'react';
-import './SignUp.scss';
+import './Signup.scss';
 
 const SignUp = () => {
   return (
-    <div className="SignUp">
+    <div className="signup">
       <div className="container">
         <div className="content">
           <div className="top">
@@ -32,11 +32,7 @@ const SignUp = () => {
                   <h3 className="pw-check">비밀번호 확인</h3>
                 </div>
                 <div className="pw-check-right">
-                  <input
-                    type="password"
-                    placeholder="- 없이 입력하세요."
-                    className="pw-check-input"
-                  />
+                  <input type="password" className="pw-check-input" />
                 </div>
               </div>
               <div className="name-box">
@@ -60,7 +56,10 @@ const SignUp = () => {
                   <h3 className="phone-number">휴대폰 번호</h3>
                 </div>
                 <div className="phone-number-right">
-                  <input className="phone-number-input" />
+                  <input
+                    className="phone-number-input"
+                    placeholder="- 없이 입력하세요."
+                  />
                 </div>
               </div>
               <div className="address-box">
