@@ -1,7 +1,7 @@
+import Counter from '../Goods_view/Counter_box/Counter_box';
 import './Goods_view.scss';
+import './mock.json';
 function Goods_view({ items }) {
-  console.log(items[0].imgUrl);
-
   return (
     <div>
       <div className="product_detail_container">
@@ -10,9 +10,12 @@ function Goods_view({ items }) {
             <div className="detail_left">
               <div className="detail_image_container">
                 <div className="detail_image_wrapper">
-                  <img src="https://image.shutterstock.com/image-photo/chiken-potato-other-vegetables-on-600w-534962260.jpg" />
-                  <img src={items[0].imgUrl} />
-                  <img src={items[1].imgUrl} />
+                  <img
+                    src="https://image.shutterstock.com/image-photo/chiken-potato-other-vegetables-on-600w-534962260.jpg"
+                    alt="chicken_lug_image"
+                  />
+                  <img src={items[0].imgUrl} alt="chicken_lug_image" />
+                  <img src={items[1].imgUrl} alt="chicken_leg_image" />
                 </div>
               </div>
             </div>
@@ -45,7 +48,7 @@ function Goods_view({ items }) {
                       <option value="cut">껍질 제거 (+1,000원)</option>
                       <option value="seasoning">시즈닝 (+2,000원)</option>
                       <option value="sauce">양념소스 추가 (+3,000원)</option>
-                      <option value="vaccume">
+                      <option value="vacuum">
                         수비드용 진공포장 (+1,000원)
                       </option>
                       <option value="bone">뼈 제거 (+1,000원)</option>
@@ -55,7 +58,8 @@ function Goods_view({ items }) {
                     <div className="order_product_option_display_area">
                       <span className="product_name">닭가슴살 더블팩</span>
                       <div className="product_price">
-                        <span className="product_count">
+                        <Counter />
+                        {/* <span className="product_count">
                           <input
                             type="text"
                             title="수량"
@@ -67,7 +71,7 @@ function Goods_view({ items }) {
                             <button type="button">증가</button>
                             <button type="button">감소</button>
                           </span>
-                        </span>
+                        </span> */}
                         <em>
                           <strong>{items[0].price}</strong>
                         </em>
