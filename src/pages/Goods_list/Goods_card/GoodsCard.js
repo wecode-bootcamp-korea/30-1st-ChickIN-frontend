@@ -1,5 +1,6 @@
 function GoodsCard() {
-  return <></>;
+  return;
+  <> </>;
 }
 
 export default GoodsCard;
