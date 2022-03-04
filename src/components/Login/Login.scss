@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
-.Login {
+.login {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -11,7 +11,7 @@
   background-color: #fff;
   text-align: left;
 
-  .login-header {
+  .login_header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -19,14 +19,14 @@
     width: 330px;
     padding: 40px 0px;
 
-    .login-button-close {
+    .login_button_close {
       background-image: url('../../assets/buttonClose.png');
       background-size: cover;
       width: 18px;
       height: 18px;
     }
 
-    .login-title {
+    .login_title {
       display: flex;
       align-items: center;
       padding-right: 100px;
@@ -35,10 +35,10 @@
       font-weight: 300;
     }
   }
-  .login-body {
+  .login_body {
     padding: 0 34px 90px 34px;
     margin: 0 -34px;
-    .welcome-text {
+    .welcome_text {
       padding-bottom: 21px;
       font-family: 'Noto Sans KR', sans-serif;
       font-size: 18px;
@@ -48,15 +48,15 @@
         line-height: 25px;
       }
     }
-    .form-login {
-      .login-form-wrapper {
+    .form_login {
+      .login_form_wrapper {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         height: 210px;
       }
-      .login-id-input,
-      .login-pw-input {
+      .login_id_input,
+      .login_pw_input {
         width: 100%;
         height: 50px;
         padding: 0 13px;
@@ -67,7 +67,7 @@
         letter-spacing: -0.26px;
         line-height: 25px;
       }
-      .button-login {
+      .button_login {
         width: 100%;
         height: 50px;
         padding: 0 13px;
@@ -80,7 +80,7 @@
         line-height: 25px;
         cursor: pointer;
       }
-      .sign_up {
+      .sign_up_button {
         display: flex;
         justify-content: center;
         padding-top: 15px;

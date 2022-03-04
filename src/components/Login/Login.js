@@ -1,78 +1,86 @@
 import React, { useState } from 'react';
+// import { Navigate } from 'react-router-dom';
 import './Login.scss';
 
-const ID = 'hslee72@gmail.com';
-const PW = '1234';
+// const ID = 'hslee72@gmail.com';
+// const PW = '1234';
 
-let regExp =
-  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+// let regExp =
+//   /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
 const Login = () => {
-  const [id, setId] = useState('');
-  const [pw, setPw] = useState('');
+  const [idValue, setIdValue] = useState('');
+  const [pwValue, setPwValue] = useState('');
 
   const updateId = e => {
-    setId(e.target.value);
+    setIdValue(e.target.value);
   };
 
   const updatePw = e => {
-    setPw(e.target.value);
+    setPwValue(e.target.value);
   };
+  console.log(pwValue);
 
   const submitHandler = e => {
     e.preventDefault();
+    console.log('submit');
 
-    if (id === ID && pw === PW) {
-      return alert('로그인 성공!');
-    } else if (!regExp.test(id)) {
-      return alert('올바른 이메일 형식이 아닙니다');
-    } else if (!regExp.test(id) && pw !== PW) {
-      return alert('올바른 이메일 형식이 아닙니다');
-    } else if (regExp.test(id) && pw === PW) {
-      return alert('등록된 이메일 정보가 없습니다');
-    } else if (regExp.test(id) && pw !== PW) {
-      return alert('일치하는 회원정보가 없습니다');
-    }
+    fetch('http://10.58.63.9:8000/users/login', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: idValue,
+        password: pwValue,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        if (result.message === 'SUCCESS') {
+          alert('로그인 성공!');
+          // Navigate('/Main');
+        } else {
+          alert('가입된 회원 정보가 없습니다');
+        }
+      });
   };
 
   return (
-    <div className="Login">
-      <div className="login-header">
-        <div className="login-button-close" />
-        <div className="login-title">로그인 및 회원가입</div>
+    <div className="login">
+      <div className="login_header">
+        <div className="login_button_close" />
+        <div className="login_title">로그인 및 회원가입</div>
       </div>
-      <div className="login-body">
-        <div className="welcome-text">
+      <div className="login_body">
+        <div className="welcome_text">
           <p>안녕하세요,</p>
           <p>회원가입하고 ChickIN 혜택을 받으세요</p>
         </div>
-        <form className="form-login" method="post" action="">
-          <div className="login-form-wrapper">
-            <div className="login-user-id">
+        <form className="form_login" method="post" action="">
+          <div className="login_form_wrapper">
+            <div className="login_user_id">
               <input
                 type="email"
-                className="login-id-input"
+                className="login_id_input"
                 placeholder="이메일"
                 onChange={updateId}
               />
             </div>
-            <div className="login-user-pw">
+            <div className="login_user_pw">
               <input
                 type="password"
-                className="login-pw-input"
+                className="login_pw_input"
                 placeholder="비밀번호"
                 onChange={updatePw}
               />
             </div>
             <button
               type="submit"
-              className="button-login"
+              className="button_login"
               onClick={submitHandler}
             >
               로그인 하기
             </button>
           </div>
-          <a href="/sign-up" className="sign_up-button">
+          <a href="/sign_up" className="sign_up_button">
             ChickIN 계정이 없으신가요? 계정을 만드세요!
           </a>
         </form>
