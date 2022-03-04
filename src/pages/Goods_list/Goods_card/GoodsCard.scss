@@ -1,0 +1,18 @@
+.product {
+  display: flex;
+  justify-content: column;
+  & img {
+    width: 200px;
+    height: 200px;
+  }
+
+  h4 {
+    margin: 0;
+    padding: 0;
+  }
+
+  .product_price {
+    margin: 0;
+    padding: 0;
+  }
+}
