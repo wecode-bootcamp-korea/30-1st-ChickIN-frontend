@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-let init = 0;
 function Counter() {
   const [count, setCount] = useState(1);
   const maxCount = 10;
@@ -25,8 +24,6 @@ function Counter() {
     <form>
       <span className="product_count">
         <input
-          required
-          type="number"
           name="counter"
           value={count}
           onChange={event => {
@@ -34,14 +31,10 @@ function Counter() {
           }}
         />
         <span>
-          {/* <button onClick={() => onIncreaseCount(count + 1)}>증가</button> */}
-          {/* <button onClick={onDecreaseCount}>감소</button> */}
-          <input
-            type="button"
-            onClick={() => onIncreaseCount()}
-            value="+"
-            className="cursor-pointer"
-          />
+          <div className="button_box">
+            <input type="button" onClick={() => onIncreaseCount()} value="+" />
+            <input type="button" onClick={() => onDecreaseCount()} value="-" />
+          </div>
         </span>
       </span>
     </form>
