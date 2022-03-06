@@ -11,7 +11,7 @@ function Nav() {
     <nav className="nav">
       <div className="nav_logo">
         <a href="#">
-          <div>Chick.IN</div>
+          <h1>Chick.IN</h1>
         </a>
       </div>
       <div className="nav_service_menu">

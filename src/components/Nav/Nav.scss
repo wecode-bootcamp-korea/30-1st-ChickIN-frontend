@@ -40,12 +40,15 @@
   color: var(--color-black);
   padding: 15px;
   transition: all var(--animation-duration) ease-in-out;
-  z-index: 1;
+  z-index: 10;
   /* navbar 은 무슨일이있어도 제일 위에있어야되니까. z-index 1  */
 
   .nav_logo {
+    display: flex;
     font-size: var(--font-medium);
     font-weight: var(--weight-semi-bold);
+    justify-content: center;
+    align-items: center;
     width: 15%;
     margin: 14px 10px;
   }
@@ -53,7 +56,6 @@
   .nav_service_menu {
     display: flex;
     justify-content: center;
-    text-decoration: none;
     align-items: center;
     background-color: pink;
     width: 65%;
@@ -92,9 +94,14 @@
 
   .drop_down_menu {
     position: absolute;
-    background-color: black;
+    left: 0px;
+    top: 100px;
+    background-color: white;
     opacity: 0;
     visibility: hidden;
+    width: 100%;
+    //absolute는 부모한테 종속 해주고 기준잡고 이동하기 좋은 방법!
+
     & li {
       padding: 16px 28px;
       border-bottom: 1px solid black;
@@ -112,7 +119,7 @@
   }
 
   .drop_down_menu_under_chicken {
-    // position: absolute;
+    position: absolute;
     background-color: yellow;
     opacity: 0;
     visibility: hidden;
