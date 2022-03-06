@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Counter() {
+function Counter({ items }) {
   const [count, setCount] = useState(1);
   const maxCount = 10;
   const minCount = 1;
@@ -22,21 +22,45 @@ function Counter() {
 
   return (
     <form>
-      <span className="product_count">
-        <input
-          name="counter"
-          value={count}
-          onChange={event => {
-            handleCount(event.target.value);
-          }}
-        />
-        <span>
-          <div className="button_box">
-            <input type="button" onClick={() => onIncreaseCount()} value="+" />
-            <input type="button" onClick={() => onDecreaseCount()} value="-" />
+      <div className="option_total_area">
+        <div className="order_product_option_display_area">
+          <span className="product_name">{items.result.title}</span>
+          <div className="product_price">
+            <span className="product_count">
+              <input
+                className="input_text_goodsCnt"
+                value={count}
+                onChange={event => {
+                  handleCount(event.target.value);
+                }}
+              />
+              <span>
+                <div className="button_box">
+                  <input
+                    className="up_button"
+                    type="button"
+                    class
+                    onClick={() => onIncreaseCount()}
+                    title="증가"
+                    value="&#8896;"
+                  />
+                  <input
+                    className="down_button"
+                    type="button"
+                    onClick={() => onDecreaseCount()}
+                    title="감소"
+                    value="&#8897;"
+                  />
+                </div>
+              </span>
+            </span>
+            <em>{items.result.old_price}</em>
           </div>
-        </span>
-      </span>
+          <div className="delete_button">
+            <button type="button">&#x2613;</button>
+          </div>
+        </div>
+      </div>
     </form>
   );
 }

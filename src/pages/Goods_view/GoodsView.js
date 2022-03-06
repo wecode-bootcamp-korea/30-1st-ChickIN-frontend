@@ -1,8 +1,11 @@
-import Counter from './Counter_box/CounterBox';
+import React, { useEffect, useState } from 'react';
 import './GoodsView.scss';
 import './mock.json';
+import Counter from './Counter_box/CounterBox';
 
 function GoodsView({ items }) {
+  const [isShow, setIsShow] = useState(false);
+
   return (
     <div>
       <div className="product_detail_container">
@@ -12,35 +15,57 @@ function GoodsView({ items }) {
               <div className="detail_image_container">
                 <div className="detail_image_wrapper">
                   <img
-                    src="https://image.shutterstock.com/image-photo/chiken-potato-other-vegetables-on-600w-534962260.jpg"
-                    alt="chicken_lug_image"
+                    src={items.result.images[0].image_url}
+                    alt="chicken_image"
                   />
-                  <img src={items[0].imgUrl} alt="chicken_lug_image" />
-                  <img src={items[1].imgUrl} alt="chicken_leg_image" />
+                  <img
+                    src={items.result.images[1].image_url}
+                    alt="chicken_image"
+                  />
+                  <img
+                    src={items.result.images[2].image_url}
+                    alt="chicken_image"
+                  />
                 </div>
               </div>
             </div>
             <div className="detail_right">
               <div className="detail_information">
-                <div className="detail_information_title">{items[0].title}</div>
+                <div className="detail_information_title">
+                  {items.result.title}
+                </div>
                 <div className="detail_information_wrapper">
                   <div className="product_price_wrapper">
                     <div className="product_discount">
-                      <span className="discount_price">10%</span>
-                      <span className="old_price">68,000원</span>
+                      <span className="discount_price">
+                        {items.result.discount}
+                      </span>
+                      <span className="old_price">
+                        {items.result.old_price}
+                      </span>
                     </div>
-                    <div className="product_new_price">{items[0].price}</div>
+                    <div className="product_new_price">
+                      {items.result.new_price}
+                    </div>
                   </div>
                 </div>
                 <div className="product_description">
-                  넘쳐흐르는 육즙과 특수부위의 농후한 향, 쫄깃한 식감까지 담은
-                  채끝
+                  {items.result.description}
                 </div>
                 <div className="product_option">
                   <div className="choice_number_option">
-                    <select className="option">
-                      <option value="">중량</option>
-                      <option value="">1팩</option>
+                    <select
+                      onClick={() => {
+                        setIsShow(true);
+                      }}
+                      className="option"
+                    >
+                      <option className="weight" value="1">
+                        중량
+                      </option>
+                      <option className="1_pack" value="2">
+                        1팩
+                      </option>
                     </select>
                   </div>
                   <div className="choice_add_option">
@@ -55,30 +80,8 @@ function GoodsView({ items }) {
                       <option value="bone">뼈 제거 (+1,000원)</option>
                     </select>
                   </div>
-                  <div className="option_total_area">
-                    <div className="order_product_option_display_area">
-                      <span className="product_name">닭가슴살 더블팩</span>
-                      <div className="product_price">
-                        <Counter />
-                        {/* <span className="product_count">
-                          <input
-                            type="text"
-                            title="수량"
-                            data-key="0"
-                            className="product-count"
-                            value="1"
-                          />
-                          <span>
-                            <button type="button">증가</button>
-                            <button type="button">감소</button>
-                          </span>
-                        </span> */}
-                        <em>
-                          <strong>{items[0].price}</strong>
-                        </em>
-                      </div>
-                    </div>
-                  </div>
+                  {isShow === true ? <Counter items={items} /> : null}
+
                   <div className="buy_button_wrapper">
                     <button type="butotn">장바구니</button>
                     <button type="butotn">바로 구매</button>
@@ -86,7 +89,7 @@ function GoodsView({ items }) {
                   <div className="total_price">
                     <p className="total">
                       <strong>총 구매 금액 : </strong>
-                      <strong>{items[0].price} </strong>
+                      <strong>{} </strong>
                     </p>
                   </div>
                 </div>

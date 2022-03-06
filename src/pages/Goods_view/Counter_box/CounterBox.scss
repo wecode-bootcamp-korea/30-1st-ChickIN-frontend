@@ -1,10 +1,23 @@
 form {
-  .product_count {
-    input {
-    }
-
-    .button_box {
-      input {
+  .option_total_area {
+    .order_product_option_display_area {
+      .product_name {
+      }
+      .product_price {
+        display: flex;
+        .product_count {
+          .counter {
+            width: 10px;
+          }
+          span {
+            .button_box {
+              .up_button {
+              }
+              .down_button {
+              }
+            }
+          }
+        }
       }
     }
   }
