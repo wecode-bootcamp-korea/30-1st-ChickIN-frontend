@@ -84,29 +84,6 @@
             }
           }
 
-          .option_total_area {
-            border: 1px solid black;
-            padding: 15px;
-            margin-top: 15px;
-            .order_product_option_display_area {
-              display: flex;
-              justify-content: space-between;
-              .product_name {
-                font-weight: bold;
-              }
-
-              .product_price {
-                text-align: right;
-                em {
-                  padding-left: 15px;
-                  color: #333;
-                  text-align: right;
-                  vertical-align: middle;
-                }
-              }
-            }
-          }
-
           .buy_button_wrapper {
             margin-top: 25px;
             display: flex;
