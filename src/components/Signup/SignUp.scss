@@ -94,11 +94,17 @@
           @include button_default();
           background-color: #fff;
         }
-        .signup_submit {
+        .button_activate {
           @include button_default();
           background-color: #000;
           color: #fff;
           font-weight: bold;
+        }
+        .invalid {
+          @include button_default();
+          opacity: 0.3;
+          border: 0.9px solid black;
+          cursor: disabled;
         }
       }
       .signup_form {
@@ -152,17 +158,17 @@
               }
             }
           }
-          .name_box {
+          .username_box {
             @include box;
-            .name_left {
+            .username_left {
               @include box_left;
               h3 {
                 @include box_left_h2;
               }
             }
-            .name_right {
+            .username_right {
               padding: 12px 20px;
-              .name_input {
+              .username_input {
                 @include input();
               }
             }
