@@ -4,15 +4,38 @@ import GoodsCard from './Goods_card/GoodsCard';
 import { useState, useEffect } from 'react';
 
 function GoodsList() {
-  const [cardList, setCardList] = useState([]);
+  const [itemList, setItemList] = useState([]);
+  // const [filterShow, setFilteshow] = useState(false);
+  // const navigate = useNavigate();
+  // const location = useLocation();
+
+  // const updateOffset = buttonIndex => {
+  //   const limit = 6;
+  //   const offset = buttonIndex * limit;
+  //   const queryString = `?limit=${limit}&offset=${offset}`;
+  //   window.scrollTo({
+  //     top: 400,
+  //     behavior: 'auto',
+  //   });
+
+  //   navigate(queryString);
+  // };
+
+  // const filterHandler = () => {
+  //   setFilterShow(!filterShow);
+  // };
+  // const goToDetail = productId => {
+  //   navigate(`/productDetail/${productId}`);
+  // };
 
   useEffect(() => {
     fetch('http://localhost:3000/data/mock.json')
       .then(res => res.json())
-      .then(data => setCardList(data));
+      .then(data => setItemList(data));
   }, []);
 
   return (
+    // <section>
     <>
       <div className="product_list_header">
         <div className="categories_title">
@@ -72,9 +95,15 @@ function GoodsList() {
           </li>
         </div>
       </div>
-      <div className="product_list">
-        <GoodsCard CardsList={cardList} />
-      </div>
+      <section>
+        <div className="product_list_wrap">
+          <h1 className="productCount">제품 &#40;{itemList.length}&#41;</h1>
+          <ul className="productList">
+            <GoodsCard CardsList={itemList} />
+          </ul>
+        </div>
+        {/* <Pagination updateOffset= {updateOffset} /> */}
+      </section>
     </>
   );
 }
