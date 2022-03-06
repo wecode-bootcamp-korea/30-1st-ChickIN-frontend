@@ -37,31 +37,35 @@ const SignUp = () => {
     hasAddress &&
     hasPhoneNumber;
 
-  // fetch(api.signup, {
-  //   method: 'POST',
-  //   body: JSON.stringify({
-  //     email: inputValue.email,
-  //     password: inputValue.password,
-  //     username: inputValue.username,
-  //     phone_number: inputValue.phone_number,
-  //     address: inputValue.address,
-  //   }),
-  // })
-  //   .then(response => response.json())
-  //   .then(result => {
-  //     if (result.message === 'CREATE ACCOUNT SUCCESS') {
-  //       alert('회원가입이 완료되었습니다!');
-  //       navigate('/main');
-  //       return;
-  //     }
-  //     if (result.message === 'ALREADY_EXIST_EMAIL') {
-  //       alert('이미 가입된 이메일 입니다');
-  //       return;
-  //     } else if (result.message === 'ALREADY_EXIST_PHONE_NUMBER') {
-  //       alert('이미 가입된 전화번호 입니다');
-  //       return;
-  //     }
-  //   });
+  const submitHandler = e => {
+    e.preventDefault();
+
+    fetch(api.signup, {
+      method: 'POST',
+      body: JSON.stringify({
+        email: inputValue.email,
+        password: inputValue.password,
+        username: inputValue.username,
+        phone_number: inputValue.phone_number,
+        address: inputValue.address,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        if (result.message === 'CREATE ACCOUNT SUCCESS') {
+          alert('회원가입이 완료되었습니다!');
+          navigate('/main');
+          return;
+        }
+        if (result.message === 'ALREADY_EXIST_EMAIL') {
+          alert('이미 가입된 이메일 입니다');
+          return;
+        } else if (result.message === 'ALREADY_EXIST_PHONE_NUMBER') {
+          alert('이미 가입된 전화번호 입니다');
+          return;
+        }
+      });
+  };
 
   return (
     <div className="signup">
@@ -161,6 +165,7 @@ const SignUp = () => {
             <button
               className={`${isFormValid ? 'button_activate' : 'invalid'}`}
               disabled={!isFormValid}
+              onClick={submitHandler}
             >
               회원가입
             </button>
