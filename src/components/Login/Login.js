@@ -44,7 +44,7 @@ const Login = () => {
       <div className="login_body">
         <div className="welcome_text">
           <p>안녕하세요,</p>
-          <p>회원가입하고 ChickIN 혜택을 받으세요</p>
+          <p>회원가입하고 Chick'in 혜택을 받으세요</p>
         </div>
         <form className="form_login" method="post" action="">
           <div className="login_form_wrapper">
@@ -64,17 +64,13 @@ const Login = () => {
                 onChange={updatePw}
               />
             </div>
-            <button
-              type="submit"
-              className="button_login"
-              onClick={submitHandler}
-            >
+            <button type="submit" className="button_login">
               로그인 하기
             </button>
           </div>
-          <a href="/sign_up" className="sign_up_button">
+          <p onClick={submitHandler} className="sign_up_button">
             ChickIN 계정이 없으신가요? 계정을 만드세요!
-          </a>
+          </p>
         </form>
       </div>
     </div>

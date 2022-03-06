@@ -73,6 +73,20 @@
           font-family: 'Noto Sans KR', sans-serif;
         }
       }
+      .join {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-left: 150px;
+        margin-top: 100px;
+        .join_info {
+          font-family: 'Noto Sans KR', sans-serif;
+        }
+        .essential_info {
+          font-family: 'Noto Sans KR', sans-serif;
+          font-size: 13px;
+        }
+      }
       .button {
         display: flex;
         justify-content: center;
@@ -91,19 +105,19 @@
         display: flex;
         justify-content: center;
         .signup_content {
-          .id_box {
-            margin-top: 80px;
+          .email_box {
+            margin-top: 20px;
             border-top: 1px solid #000;
             @include box;
-            .id_left {
+            .email_left {
               @include box_left;
               h3 {
                 @include box_left_h2;
               }
             }
-            .id_right {
+            .email_right {
               padding: 12px 20px;
-              .id_input {
+              .email_input {
                 @include input();
               }
             }
@@ -123,17 +137,17 @@
               }
             }
           }
-          .pw_check_box {
+          .pw_confirm_box {
             @include box;
-            .pw_check_left {
+            .pw_confirm_left {
               @include box_left;
               h3 {
                 @include box_left_h2;
               }
             }
-            .pw_check_right {
+            .pw_confirm_right {
               padding: 12px 20px;
-              .pw_check_input {
+              .pw_confirm_input {
                 @include input();
               }
             }
@@ -149,21 +163,6 @@
             .name_right {
               padding: 12px 20px;
               .name_input {
-                @include input();
-              }
-            }
-          }
-          .email_box {
-            @include box;
-            .email_left {
-              @include box_left;
-              h3 {
-                @include box_left_h2;
-              }
-            }
-            .email_right {
-              padding: 12px 20px;
-              .email_input {
                 @include input();
               }
             }
