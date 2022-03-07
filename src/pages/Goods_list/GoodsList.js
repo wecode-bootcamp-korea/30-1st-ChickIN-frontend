@@ -2,32 +2,40 @@ import React from 'react';
 import './GoodsList.scss';
 import GoodsCard from './Goods_card/GoodsCard';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 function GoodsList() {
   const [itemList, setItemList] = useState([]);
-  // const [filterShow, setFilteshow] = useState(false);
+  const [listName, setListName] = useState('구이용');
   const navigate = useNavigate();
-  // const location = useLocation();
+  const location = useLocation();
+  const decodeuri = decodeURI(location.search);
+  // console.log(`decode: ${decodeuri}`);
+  const nextQuestionMark = decodeuri.substr(1); // 쿼리스트링 값나오게끔! (? 다음부분)
+  // console.log(nextQuestionMark);
 
-  // const updateOffset = buttonIndex => {
-  //   const limit = 6;
-  //   const offset = buttonIndex * limit;
-  //   const queryString = `?limit=${limit}&offset=${offset}`;
-  //   window.scrollTo({
-  //     top: 400,
-  //     behavior: 'auto',
-  //   });
-
-  //   navigate(queryString);
-  // };
-
-  // const filterHandler = () => {
-  //   setFilterShow(!filterShow);
-  // };
+  const sectionChangeToDish = () => {
+    setListName('요리용');
+    fetch(`/data/mock2.json`)
+      .then(res => res.json())
+      .then(data => setItemList(data));
+  };
 
   const goToDetail = productId => {
     navigate(`/goodsview/${productId}`);
+  };
+
+  const fetch_for_grilled = () => {
+    fetch(`/data/mock.json`)
+      .then(res => res.json())
+      .then(data => setItemList(data));
+  };
+
+  const sectionChangeToGrill = () => {
+    setListName('구이용');
+    fetch(`/data/mock.json`)
+      .then(res => res.json())
+      .then(data => setItemList(data));
   };
 
   useEffect(() => {
@@ -41,13 +49,13 @@ function GoodsList() {
     <section className="goods_list_page">
       <div className="product_list_header">
         <div className="categories_title">
-          <h2>구이용</h2>
+          <h2>{listName}</h2>
           <button className="filter_button">추천순 V</button>
         </div>
         <div>
           <ul className="filterSort">
             <li>
-              <a>전체</a>
+              <a onClick={fetch_for_grilled}>전체</a>
             </li>
             <span class="category-span"></span>
             <li>
@@ -74,10 +82,10 @@ function GoodsList() {
             <dl>
               <div className="name_category">닭</div>
               <li>
-                <a>구이용</a>
+                <a onClick={sectionChangeToGrill}>구이용</a>
               </li>
               <li>
-                <a>요리용</a>
+                <a onClick={sectionChangeToDish}>요리용</a>
               </li>
             </dl>
           </div>
