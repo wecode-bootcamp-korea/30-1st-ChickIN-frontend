@@ -3,7 +3,9 @@ import { Navigate } from 'react-router-dom';
 import { API } from '../../../src/config';
 import './Signup.scss';
 
-const reg = /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+const passwordReg = /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+const emailReg =
+  /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 
 const SignUp = () => {
   const [inputValue, setInputValue] = useState({
@@ -23,16 +25,16 @@ const SignUp = () => {
     });
   };
 
-  const isEmailValid = inputValue.email.includes('@');
-  const isPasswordValid =
-    inputValue.password.length >= 8 && reg.test(inputValue.password);
+  const isValidEmail = emailReg.test(inputValue.email);
+  const isValidPassword =
+    inputValue.password.length >= 8 && passwordReg.test(inputValue.password);
   const isPasswordSame = inputValue.password === inputValue.confirm_password;
   const hasUsername = checkIsFilled(inputValue.username);
   const hasAddress = checkIsFilled(inputValue.address);
   const hasPhoneNumber = checkIsFilled(inputValue.phone_number);
-  const isFormValid =
-    isEmailValid &&
-    isPasswordValid &&
+  const isValidForm =
+    isValidEmail &&
+    isValidPassword &&
     isPasswordSame &&
     hasUsername &&
     hasAddress &&
@@ -161,8 +163,8 @@ const SignUp = () => {
           <div className="button">
             <button className="cancel">취소</button>
             <button
-              className={`${isFormValid ? 'button_activate' : 'invalid'}`}
-              disabled={!isFormValid}
+              className={`${isValidForm ? 'button_activate' : 'invalid'}`}
+              disabled={!isValidForm}
               onClick={submitHandler}
             >
               회원가입
