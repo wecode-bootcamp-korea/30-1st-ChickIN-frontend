@@ -21,17 +21,35 @@
       }
     ],
     "description": "넘쳐흐르는 육즙과 특수부위의 농후한 향, 쫄깃한 식감까지 담은 채끝 채끝은 한우에서 기대하는 감칠맛, 고소함 등 다양한 맛을 고루 느낄 수 있는 부위입니다. 고운 결 속 넘쳐흐르는 육즙은 물론,",
-
-    "weight": [
+    "options": [
       {
-        "weight_id": 1,
-        "weight": "100g",
-        "weight_price": "5000"
+        "option_id": 11,
+        "option_name": "추가옵션"
       },
       {
-        "weight_id": 2,
-        "weight": "200g",
-        "weight_price": "10000"
+        "option_id": 12,
+        "option_name": "선물 포장 (+1,000원)",
+        "option_price": 1000
+      },
+      {
+        "option_id": 13,
+        "option_name": "선물 포장2 (+2,000원)",
+        "option_price": 2000
+      },
+      {
+        "option_id": 14,
+        "option_name": "선물 포장3 (+3,000원)",
+        "option_price": 3000
+      },
+      {
+        "option_id": 15,
+        "option_name": "진공포장 (+4,000원)",
+        "option_price": 4000
+      },
+      {
+        "option_id": 16,
+        "option_name": "진공포장2 (+5,000원)",
+        "option_price": 5000
       }
     ]
   }

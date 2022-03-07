@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import './CountBox.scss';
+import './SubOptionsBox.scss';
 
-function Counter({ items }) {
+function SubOptionsBox({ items }) {
   const [count, setCount] = useState(1);
-  const [show, setShow] = useState(false);
   const maxCount = 10;
   const minCount = 1;
-  const oldPrice = items.result.old_price;
+  const oldPrice = items.result.options[1].option_price;
   const resultPrice = oldPrice * count;
   const handleCount = event => {
     if (event > maxCount) {
@@ -22,14 +21,26 @@ function Counter({ items }) {
   const onDecreaseCount = () => {
     if (count > minCount) setCount(count - 1);
   };
-
+  const {
+    id,
+    title,
+    discount,
+    old_price,
+    new_price,
+    total_price,
+    images,
+    description,
+    options,
+  } = items.result;
   return (
     <form>
-      <div className="option_total_area">
-        <div className="order_product_option_display_area">
-          <span className="product_name">{items.result.title}</span>
-          <div className="product_price">
-            <span className="product_count">
+      <div className="sub_option_total_area">
+        <div className="sub_option_display_area">
+          <span className="sub_option_name">
+            &#9493; {options[1].option_name}
+          </span>
+          <div className="sub_option_price">
+            <span className="sub_option_count">
               <input
                 className="input_text_goodsCnt"
                 value={count}
@@ -60,19 +71,11 @@ function Counter({ items }) {
             <em>{resultPrice}원</em>
           </div>
           <div className="delete_button">
-            <button
-              // onClick={() => {
-              //   setIsShow(false);
-              // }}
-              type="button"
-            >
-              &#x2613;
-            </button>
+            <button type="button">&#x2613;</button>
           </div>
         </div>
       </div>
     </form>
   );
 }
-
-export default Counter;
+export default SubOptionsBox;
