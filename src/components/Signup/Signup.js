@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
+import { API } from '../../../src/config';
 import './Signup.scss';
+
+const reg = /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
 const SignUp = () => {
   const [inputValue, setInputValue] = useState({
@@ -20,16 +23,13 @@ const SignUp = () => {
     });
   };
 
-  console.log(inputValue);
-
   const isEmailValid = inputValue.email.includes('@');
-  const reg = /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
   const isPasswordValid =
     inputValue.password.length >= 8 && reg.test(inputValue.password);
   const isPasswordSame = inputValue.password === inputValue.confirm_password;
-  const hasUsername = inputValue.username.length > 0;
-  const hasAddress = inputValue.address.length > 0;
-  const hasPhoneNumber = inputValue.phone_number.length > 0;
+  const hasUsername = checkIsFilled(inputValue.username);
+  const hasAddress = checkIsFilled(inputValue.address);
+  const hasPhoneNumber = checkIsFilled(inputValue.phone_number);
   const isFormValid =
     isEmailValid &&
     isPasswordValid &&
@@ -41,7 +41,7 @@ const SignUp = () => {
   const submitHandler = e => {
     e.preventDefault();
 
-    fetch('http://10.58.2.197:8000/users/signup', {
+    fetch(API.signup, {
       method: 'POST',
       body: JSON.stringify({
         email: inputValue.email,
@@ -175,3 +175,7 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
+const checkIsFilled = value => {
+  return value.length > 0;
+};
