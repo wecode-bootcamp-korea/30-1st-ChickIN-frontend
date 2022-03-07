@@ -17,7 +17,7 @@ const Login = () => {
   const submitHandler = e => {
     e.preventDefault();
 
-    fetch('http://10.58.63.9:8000/users/login', {
+    fetch('http://10.58.2.197:8000/users/login', {
       method: 'POST',
       body: JSON.stringify({
         email: idValue,
@@ -72,7 +72,7 @@ const Login = () => {
               로그인 하기
             </button>
           </div>
-          <p onClick={submitHandler} className="sign_up_button">
+          <p className="sign_up_button">
             ChickIN 계정이 없으신가요? 계정을 만드세요!
           </p>
         </form>
