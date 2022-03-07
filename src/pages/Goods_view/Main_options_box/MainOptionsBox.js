@@ -8,13 +8,6 @@ function MainOptionsBox({ items }) {
   const oldPrice = items.result.old_price;
   const resultPrice = oldPrice * count;
 
-  const handleCount = event => {
-    if (event > maxCount) {
-      setCount(maxCount);
-    } else if (event < minCount) {
-      setCount(minCount);
-    } else setCount(event);
-  };
   const onIncreaseCount = () => {
     if (count < maxCount) setCount(count + 1);
     else if (count > maxCount) setCount(maxCount);
@@ -30,13 +23,7 @@ function MainOptionsBox({ items }) {
           <span className="product_name">{items.result.title}</span>
           <div className="product_price">
             <span className="product_count">
-              <input
-                className="input_text_goodsCnt"
-                value={count}
-                onChange={event => {
-                  handleCount(event.target.value);
-                }}
-              />
+              <input className="input_text_goodsCnt" value={count} readOnly />
               <span>
                 <div className="button_box">
                   <input
@@ -57,17 +44,7 @@ function MainOptionsBox({ items }) {
               </span>
             </span>
 
-            <em>{resultPrice}원</em>
-          </div>
-          <div className="delete_button">
-            <button
-              // onClick={() => {
-              //   setIsShow(false);
-              // }}
-              type="button"
-            >
-              &#x2613;
-            </button>
+            <em>{resultPrice} 원</em>
           </div>
         </div>
       </div>

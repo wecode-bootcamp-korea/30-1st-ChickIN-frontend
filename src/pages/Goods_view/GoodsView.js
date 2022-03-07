@@ -3,29 +3,20 @@ import './GoodsView.scss';
 import './mock.json';
 import MainOptionsBox from './Main_options_box/MainOptionsBox';
 import SubOptionsBox from './Sub_options_box/SubOptionsBox';
+
 function GoodsView({ items }) {
-  const [isShow, setIsShow] = useState(1);
-  const [selectedOptions, setSelectedOptions] = useState([]);
-
-  const updateSelectedOptions = e => {
-    console.log(e.target.value);
-
-    // setSelectedOptions([...selectedOptions, e.target.value]);
-  };
-
-  console.log('selectedOptions', selectedOptions);
-
+  const [isShow, setIsShow] = useState(false);
+  const [selectedOptions, setSelectedOptions] = useState();
   const {
-    id,
     title,
     discount,
     old_price,
     new_price,
-    total_price,
     images,
     description,
     options,
   } = items.result;
+
   return (
     <div>
       <div className="product_detail_container">
@@ -56,9 +47,6 @@ function GoodsView({ items }) {
                 <div className="product_option">
                   <div className="choice_number_option">
                     <select className="option">
-                      <option className="weight" value="1">
-                        옵션
-                      </option>
                       <option className="1_pack" value="2">
                         {title}
                       </option>
@@ -67,28 +55,35 @@ function GoodsView({ items }) {
                   <div className="choice_add_option">
                     <select
                       className="option"
-                      // onChange={updateSelectedOptions}
                       onChange={e => {
-                        console.log(e.target.value);
-                        e.target.value === 'cut'
+                        setSelectedOptions(e.target.value);
+                        e.target.value !== ''
                           ? setIsShow(true)
                           : setIsShow(false);
                       }}
                     >
                       <option value="">{options[0].option_name}</option>
-                      <option value="cut">{options[1].option_name}</option>
-                      <option value="seasoning">
+                      <option value="선물 포장1">
+                        {options[1].option_name}
+                      </option>
+                      <option value="선물 포장2">
                         {options[2].option_name}
                       </option>
-                      <option value="sauce">{options[3].option_name}</option>
-                      <option value="vacuum">{options[4].option_name}</option>
-                      <option value="bone">{options[5].option_name}</option>
+                      <option value="선물 포장3">
+                        {options[3].option_name}
+                      </option>
+                      <option value="선물 포장4">
+                        {options[4].option_name}
+                      </option>
+                      <option value="선물 포장5">
+                        {options[5].option_name}
+                      </option>
                     </select>
                   </div>
-                  {/* {isShow === true ? <MainOptionsBox items={items} /> : null} */}
                   <MainOptionsBox items={items} />
-                  {isShow === true ? <SubOptionsBox items={items} /> : null}
-                  {/* <SubOptionsBox items={items} /> */}
+                  {isShow === true ? (
+                    <SubOptionsBox selectedOptions={selectedOptions} />
+                  ) : null}
                   <div className="buy_button_wrapper">
                     <button type="butotn">장바구니</button>
                     <button type="butotn">바로 구매</button>
