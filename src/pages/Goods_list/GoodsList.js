@@ -55,23 +55,23 @@ function GoodsList() {
         <div>
           <ul className="filterSort">
             <li>
-              <a onClick={fetch_for_grilled}>전체</a>
+              <div onClick={fetch_for_grilled}>전체</div>
             </li>
             <span class="category-span"></span>
             <li>
-              <a>윙</a>
+              <div>윙</div>
             </li>
             <span class="category-span"></span>
             <li>
-              <a>봉</a>
+              <div>봉</div>
             </li>
             <span class="category-span"></span>
             <li>
-              <a>닭가슴살</a>
+              <div>닭가슴살</div>
             </li>
             <span class="category-span"></span>
             <li>
-              <a>특수부위</a>
+              <div>특수부위</div>
             </li>
           </ul>
         </div>
@@ -82,10 +82,10 @@ function GoodsList() {
             <dl>
               <div className="name_category">닭</div>
               <li>
-                <a onClick={sectionChangeToGrill}>구이용</a>
+                <div onClick={sectionChangeToGrill}>구이용</div>
               </li>
               <li>
-                <a onClick={sectionChangeToDish}>요리용</a>
+                <div onClick={sectionChangeToDish}>요리용</div>
               </li>
             </dl>
           </div>
@@ -93,7 +93,7 @@ function GoodsList() {
             <dl>
               <div className="name_category">오리</div>
               <li>
-                <a>더그로인DAY</a>
+                <div>더그로인DAY</div>
               </li>
             </dl>
           </div>
@@ -101,10 +101,10 @@ function GoodsList() {
             <dl>
               <div className="name_category">특별한 구성</div>
               <li>
-                <a>세트상품</a>
+                <div>세트상품</div>
               </li>
               <li>
-                <a>럭키박스</a>
+                <div>럭키박스</div>
               </li>
             </dl>
           </div>
@@ -112,10 +112,10 @@ function GoodsList() {
             <dl>
               <div className="name_category">치키인 ONLY</div>
               <li>
-                <a>월간치키인</a>
+                <div>월간치키인</div>
               </li>
               <li>
-                <a>가니쉬 & 시즈닝</a>
+                <div>가니쉬 & 시즈닝</div>
               </li>
             </dl>
           </div>
