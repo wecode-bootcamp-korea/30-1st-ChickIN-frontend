@@ -3,9 +3,11 @@ import './CountBox.scss';
 
 function Counter({ items }) {
   const [count, setCount] = useState(1);
+  const [show, setShow] = useState(false);
   const maxCount = 10;
   const minCount = 1;
-
+  const oldPrice = items.result.old_price;
+  const resultPrice = oldPrice * count;
   const handleCount = event => {
     if (event > maxCount) {
       setCount(maxCount);
@@ -40,7 +42,6 @@ function Counter({ items }) {
                   <input
                     className="up_button"
                     type="button"
-                    class
                     onClick={() => onIncreaseCount()}
                     title="증가"
                     value="&#8896;"
@@ -55,10 +56,18 @@ function Counter({ items }) {
                 </div>
               </span>
             </span>
-            <em>{items.result.old_price}</em>
+
+            <em>{resultPrice}원</em>
           </div>
           <div className="delete_button">
-            <button type="button">&#x2613;</button>
+            <button
+              // onClick={() => {
+              //   setIsShow(false);
+              // }}
+              type="button"
+            >
+              &#x2613;
+            </button>
           </div>
         </div>
       </div>

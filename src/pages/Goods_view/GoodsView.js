@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './GoodsView.scss';
 import './mock.json';
 import Counter from './Count_box/CountBox';
@@ -55,16 +55,18 @@ function GoodsView({ items }) {
                 <div className="product_option">
                   <div className="choice_number_option">
                     <select
-                      onClick={() => {
-                        setIsShow(true);
-                      }}
                       className="option"
+                      onChange={e => {
+                        e.target.value === '2'
+                          ? setIsShow(true)
+                          : setIsShow(false);
+                      }}
                     >
                       <option className="weight" value="1">
-                        중량
+                        옵션
                       </option>
                       <option className="1_pack" value="2">
-                        1팩
+                        {items.result.title}
                       </option>
                     </select>
                   </div>

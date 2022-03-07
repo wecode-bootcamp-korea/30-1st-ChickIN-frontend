@@ -3,7 +3,7 @@
     "id": 1,
     "title": "닭가슴살",
     "discount": "10%",
-    "old_price": "20,000원",
+    "old_price": 20000,
     "new_price": "18,000원",
     "total_price": "18,000원",
     "images": [
