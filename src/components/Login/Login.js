@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import './Login.scss';
 
 const Login = () => {
@@ -28,7 +28,7 @@ const Login = () => {
       .then(result => {
         if (result.message === 'SUCCESS') {
           alert('로그인 성공!');
-          // Navigate('/Main');
+          Navigate('/Main');
         } else {
           alert('가입된 회원 정보가 없습니다');
         }
@@ -64,7 +64,11 @@ const Login = () => {
                 onChange={updatePw}
               />
             </div>
-            <button type="submit" className="button_login">
+            <button
+              type="submit"
+              className="button_login"
+              onClick={submitHandler}
+            >
               로그인 하기
             </button>
           </div>
