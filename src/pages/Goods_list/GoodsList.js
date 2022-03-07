@@ -107,7 +107,6 @@ function GoodsList() {
                 <div>럭키박스</div>
               </li>
             </dl>
-            git push
           </div>
           <div className="menu_categories">
             <dl>
