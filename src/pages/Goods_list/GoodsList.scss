@@ -114,7 +114,13 @@
     .product_list_body {
       padding-top: 23px;
       padding-left: 11px;
+
       .product_list_wrap {
+        .productList {
+          display: flex;
+          width: 1200px;
+          flex-wrap: wrap;
+        }
       }
     }
   }

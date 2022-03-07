@@ -28,5 +28,5 @@ function GoodsCard(props) {
 
 export default GoodsCard;
 
-//  li vs div 물어보기 ! ->  simentic 한 부분이 차이 , 다른건 블락요소이기에 똑같음 p도
+//  li vs div  simentic 한 부분이 차이 , 다른건 블락요소이기에 똑같음 p도
 // logo는 h1 tag를 써야한다 -> 컨벤션인듯!

@@ -1,0 +1,12 @@
+.pagiNation {
+  display: inline-block;
+  margin: 30px;
+  .pageBt {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+}
