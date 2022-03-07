@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import './Signup.scss';
 
 const SignUp = () => {
@@ -38,35 +38,32 @@ const SignUp = () => {
     hasAddress &&
     hasPhoneNumber;
 
-  // const submitHandler = e => {
-  //   e.preventDefault();
+  const submitHandler = e => {
+    e.preventDefault();
 
-  //   fetch(api.signup, {
-  //     method: 'POST',
-  //     body: JSON.stringify({
-  //       email: inputValue.email,
-  //       password: inputValue.password,
-  //       username: inputValue.username,
-  //       phone_number: inputValue.phone_number,
-  //       address: inputValue.address,
-  //     }),
-  //   })
-  //     .then(response => response.json())
-  //     .then(result => {
-  //       if (result.message === 'CREATE ACCOUNT SUCCESS') {
-  //         alert('회원가입이 완료되었습니다!');
-  //         Navigate('/main');
-  //         return;
-  //       }
-  //       if (result.message === 'ALREADY_EXIST_EMAIL') {
-  //         alert('이미 가입된 이메일 입니다');
-  //         return;
-  //       } else if (result.message === 'ALREADY_EXIST_PHONE_NUMBER') {
-  //         alert('이미 가입된 전화번호 입니다');
-  //         return;
-  //       }
-  //     });
-  // };
+    fetch('http://10.58.2.197:8000/users/signup', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: inputValue.email,
+        password: inputValue.password,
+        username: inputValue.username,
+        phone_number: inputValue.phone_number,
+        address: inputValue.address,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        if (result.message === 'SUCCESS') {
+          alert('회원가입이 완료되었습니다!');
+          Navigate('/main');
+          return;
+        }
+        if (result.message === 'E-MAIL ALREADY EXISTED') {
+          alert('이미 가입된 이메일 입니다');
+          return;
+        }
+      });
+  };
 
   return (
     <div className="signup">
@@ -166,7 +163,7 @@ const SignUp = () => {
             <button
               className={`${isFormValid ? 'button_activate' : 'invalid'}`}
               disabled={!isFormValid}
-              // onClick={submitHandler}
+              onClick={submitHandler}
             >
               회원가입
             </button>
