@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { API } from '../../../src/config';
 import './Signup.scss';
 
@@ -8,6 +8,7 @@ const emailReg =
   /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
     email: '',
     password: '',
@@ -100,7 +101,7 @@ const SignUp = () => {
       .then(result => {
         if (result.message === 'SUCCESS') {
           alert('회원가입이 완료되었습니다!');
-          // navigate('/main');
+          navigate('/main');
           return;
         }
         if (result.message === 'E-MAIL ALREADY EXISTED') {
@@ -230,5 +231,3 @@ export default SignUp;
 const checkIsFilled = value => {
   return value.length > 0;
 };
-
-// const navigate = useNavigate();
