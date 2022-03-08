@@ -2,7 +2,6 @@ import React from 'react';
 import './GoodsCard.scss';
 
 function GoodsCard(props) {
-  console.log(props);
   return props.CardsList.map(
     ({ product_id, product_img, product_name, product_price }) => (
       <li className="product" key={product_id}>
