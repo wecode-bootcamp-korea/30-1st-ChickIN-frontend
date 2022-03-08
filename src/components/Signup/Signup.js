@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { API } from '../../../src/config';
 import './Signup.scss';
 
@@ -31,7 +31,9 @@ const SignUp = () => {
   const isPasswordSame = inputValue.password === inputValue.confirm_password;
   const hasUsername = checkIsFilled(inputValue.username);
   const hasAddress = checkIsFilled(inputValue.address);
-  const hasPhoneNumber = checkIsFilled(inputValue.phone_number);
+  const hasPhoneNumber =
+    checkIsFilled(inputValue.phone_number) &&
+    inputValue.phone_number.length > 10;
   const isValidForm =
     isValidEmail &&
     isValidPassword &&
@@ -43,21 +45,6 @@ const SignUp = () => {
   const checkEmail = () => {
     if (!isValidEmail && inputValue.email.length > 0) {
       alert('이메일 형식이 올바르지 않습니다.');
-      email.focus();
-    } else {
-      fetch('API.signup', {
-        method: postMessage,
-        body: JSON.stringify({
-          email: email,
-        }),
-      })
-        .then(res => res.json())
-        .then(res => {
-          if (res.message === 'E-MAIL ALREADY EXISTED') {
-            alert('이미 가입 되어있는 이메일 입니다.');
-            email.focus();
-          }
-        });
     }
   };
 
@@ -85,7 +72,7 @@ const SignUp = () => {
 
   const checkPhoneNumber = () => {
     if (!hasPhoneNumber) {
-      alert('전화번호를 입력해주세요.');
+      alert('10자리 이상의 전화번호를 입력해주세요.');
     }
   };
 
@@ -102,24 +89,24 @@ const SignUp = () => {
     fetch(API.signup, {
       method: 'POST',
       body: JSON.stringify({
-        email,
-        password,
-        username,
-        phone_number,
-        address,
+        email: email,
+        password: password,
+        username: username,
+        phone_number: phone_number,
+        address: address,
       }),
     })
       .then(response => response.json())
       .then(result => {
         if (result.message === 'SUCCESS') {
           alert('회원가입이 완료되었습니다!');
-          Navigate('/main');
+          // navigate('/main');
           return;
         }
-        // if (result.message === 'E-MAIL ALREADY EXISTED') {
-        //   alert('이미 가입된 이메일 입니다');
-        //   return;
-        // }
+        if (result.message === 'E-MAIL ALREADY EXISTED') {
+          alert('이미 가입된 이메일 입니다');
+          return;
+        }
       });
   };
 
@@ -243,3 +230,5 @@ export default SignUp;
 const checkIsFilled = value => {
   return value.length > 0;
 };
+
+// const navigate = useNavigate();
