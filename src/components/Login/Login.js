@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { API } from '../../config';
 import './Login.scss';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [idValue, setIdValue] = useState('');
   const [pwValue, setPwValue] = useState('');
 
@@ -14,10 +16,10 @@ const Login = () => {
     setPwValue(e.target.value);
   };
 
-  const submitHandler = e => {
+  const fetchLogin = e => {
     e.preventDefault();
 
-    fetch('http://10.58.2.197:8000/users/login', {
+    fetch(API.signin, {
       method: 'POST',
       body: JSON.stringify({
         email: idValue,
@@ -28,7 +30,7 @@ const Login = () => {
       .then(result => {
         if (result.message === 'SUCCESS') {
           alert('로그인 성공!');
-          Navigate('/Main');
+          navigate('/Main');
         } else {
           alert('가입된 회원 정보가 없습니다');
         }
@@ -64,11 +66,7 @@ const Login = () => {
                 onChange={updatePw}
               />
             </div>
-            <button
-              type="submit"
-              className="button_login"
-              onClick={submitHandler}
-            >
+            <button type="submit" className="button_login" onClick={fetchLogin}>
               로그인 하기
             </button>
           </div>
