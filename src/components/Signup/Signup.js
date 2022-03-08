@@ -40,17 +40,73 @@ const SignUp = () => {
     hasAddress &&
     hasPhoneNumber;
 
+  const checkEmail = () => {
+    if (!isValidEmail && inputValue.email.length > 0) {
+      alert('이메일 형식이 올바르지 않습니다.');
+      email.focus();
+    } else {
+      fetch('API.signup', {
+        method: postMessage,
+        body: JSON.stringify({
+          email: email,
+        }),
+      })
+        .then(res => res.json())
+        .then(res => {
+          if (res.message === 'E-MAIL ALREADY EXISTED') {
+            alert('이미 가입 되어있는 이메일 입니다.');
+            email.focus();
+          }
+        });
+    }
+  };
+
+  const checkPassword = () => {
+    if (!isValidPassword && inputValue.password.length > 0) {
+      alert('비밀번호는 영문, 숫자, 특수문자 포함 8자리 이상이어야 합니다.');
+    }
+  };
+
+  const confirmPassword = () => {
+    if (
+      inputValue.password !== inputValue.confirm_password &&
+      inputValue.password.length > 0 &&
+      inputValue.confirm_password.length > 0
+    ) {
+      alert('입력하신 비밀번호와 다릅니다.');
+    }
+  };
+
+  const checkUsername = () => {
+    if (!hasUsername) {
+      alert('이름을 입력해주세요.');
+    }
+  };
+
+  const checkPhoneNumber = () => {
+    if (!hasPhoneNumber) {
+      alert('전화번호를 입력해주세요.');
+    }
+  };
+
+  const checkAddress = () => {
+    if (!hasAddress) {
+      alert('주소를 입력해주세요.');
+    }
+  };
+
+  const { email, password, username, phone_number, address } = inputValue;
+
   const submitHandler = e => {
     e.preventDefault();
-
     fetch(API.signup, {
       method: 'POST',
       body: JSON.stringify({
-        email: inputValue.email,
-        password: inputValue.password,
-        username: inputValue.username,
-        phone_number: inputValue.phone_number,
-        address: inputValue.address,
+        email,
+        password,
+        username,
+        phone_number,
+        address,
       }),
     })
       .then(response => response.json())
@@ -60,10 +116,10 @@ const SignUp = () => {
           Navigate('/main');
           return;
         }
-        if (result.message === 'E-MAIL ALREADY EXISTED') {
-          alert('이미 가입된 이메일 입니다');
-          return;
-        }
+        // if (result.message === 'E-MAIL ALREADY EXISTED') {
+        //   alert('이미 가입된 이메일 입니다');
+        //   return;
+        // }
       });
   };
 
@@ -89,6 +145,7 @@ const SignUp = () => {
                     name="email"
                     className="email_input"
                     onChange={handleInput}
+                    onBlur={checkEmail}
                   />
                 </div>
               </div>
@@ -103,7 +160,8 @@ const SignUp = () => {
                     className="pw_input"
                     value={inputValue.passsword}
                     onChange={handleInput}
-                    placeholder="8자 이상, 특수문자 포함"
+                    onBlur={checkPassword}
+                    placeholder="영문, 숫자, 특수문자 포함 8자리 이상"
                   />
                 </div>
               </div>
@@ -118,6 +176,7 @@ const SignUp = () => {
                     className="pw_confirm_input"
                     value={inputValue.confirm_password}
                     onChange={handleInput}
+                    onBlur={confirmPassword}
                   />
                 </div>
               </div>
@@ -130,6 +189,7 @@ const SignUp = () => {
                     name="username"
                     className="username_input"
                     onChange={handleInput}
+                    onBlur={checkUsername}
                   />
                 </div>
               </div>
@@ -143,6 +203,7 @@ const SignUp = () => {
                     className="phone_number_input"
                     placeholder="- 없이 입력하세요."
                     onChange={handleInput}
+                    onBlur={checkPhoneNumber}
                   />
                 </div>
               </div>
@@ -155,6 +216,7 @@ const SignUp = () => {
                     name="address"
                     className="address_input"
                     onChange={handleInput}
+                    onBlur={checkAddress}
                   />
                 </div>
               </div>
