@@ -110,7 +110,6 @@ const SignUp = () => {
         }
       });
   };
-
   return (
     <div className="signup">
       <div className="container">
