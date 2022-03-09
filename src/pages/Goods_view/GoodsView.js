@@ -23,7 +23,7 @@ function GoodsView() {
   useEffect(() => {
     // fetch('http://localhost:3000/data/mock.json')
     // fetch('http://10.58.7.0:8000/products/1')
-    fetch('http://192.168.200.147:8000/products/1')
+    fetch(API.goodsview)
       .then(res => res.json())
       // .then(data => console.log(data));
       .then(data => setProductData(data.data));
