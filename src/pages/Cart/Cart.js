@@ -1,3 +1,5 @@
+import './Cart.scss';
+
 const Cart = () => {
   return (
     <div className="Cart">
@@ -79,7 +81,7 @@ const Cart = () => {
               </div>
             </div>
           </div>
-          <div className="delivery_wrapper">
+          <div className="delivery_wrap">
             <div className="early_bird_desc">
               <p className="title">주문 전 꼭 확인해주세요!</p>
               <p className="desc">
@@ -96,8 +98,8 @@ const Cart = () => {
               </p>
             </div>
           </div>
-          <div className="button-wrap">
-            <button className="button">주문하기</button>
+          <div className="button_wrap">
+            <button>주문하기</button>
           </div>
         </div>
       </div>

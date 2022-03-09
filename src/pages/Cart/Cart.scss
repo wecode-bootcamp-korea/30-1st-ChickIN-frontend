@@ -1,28 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+@mixin font-family {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+@mixin th_font_style {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 13px;
+}
+
 .Cart {
+  @include font-family;
+  width: 100%;
   .content_box {
+    width: 100%;
     .content_title {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 36px 20px 28px;
+      font-size: 20px;
+      font-weight: bold;
       h2 {
       }
       button {
       }
     }
     .cart_container {
-      .cart_container_list {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      .cart_content_list {
         .order_table {
+          background-color: yellow;
+
           table {
+            width: 1280px;
+            text-align: center;
+
             thead {
+              background-color: blue;
+              text-align: center;
+              background-color: #f5f5f5;
+              border-top: 1px solid #e0e0e0;
               tr {
                 .th_product {
+                  padding: 10px;
+                  @include th_font_style;
                 }
                 .th_product_price {
+                  @include th_font_style;
                 }
                 .th_total_price {
+                  @include th_font_style;
                 }
               }
             }
             tbody {
               tr {
                 .td_product {
+                  padding: 10px;
                   .td_product_content {
                     .td_product_image {
                     }
@@ -39,6 +76,7 @@
                   }
                 }
                 .td_option {
+                  padding: 10px;
                   .td_option_content {
                     .td_option_image {
                     }
@@ -54,41 +92,26 @@
             }
           }
         }
-        .price_sum {
-          .goods_price_box {
-            .goods_price_header {
-              p {
-              }
-            }
-            .goods_goods_price {
-              p {
-              }
-            }
-          }
-          span {
-          }
-          .delivery_charge_box {
-            .delivery_charge_header {
-              p {
-              }
-            }
-            .delivery_charge {
-              p {
-              }
-            }
-            .total_price_content {
-              .total_price_header {
-                p {
-                }
-              }
-              .total_price {
-                p {
-                }
-              }
-            }
-          }
+      }
+      .price_sum {
+        background-color: green;
+        padding: 38px 80px;
+        width: 1192px;
+        margin-top: 40px;
+      }
+      .delivery_wrap {
+        .early_bird_desc {
+          background-color: blue;
         }
-        .delivery_wrapper
+        .naver_pay_desc {
+          background-color: orange;
+        }
+      }
+      .button_wrap {
+        button {
+          width: 305px;
+          height: 60px;
+        }
       }
     }
   }
