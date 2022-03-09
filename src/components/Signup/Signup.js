@@ -51,7 +51,7 @@ const SignUp = () => {
 
   const checkPassword = () => {
     if (!isValidPassword && inputValue.password.length > 0) {
-      alert('비밀번호는 영문, 숫자, 특수문자 포함 8자리 이상이어야 합니다.');
+      alert('비밀번호는 영문, 숫자, 특수 문자 포함 8자리 이상이어야 합니다.');
     }
   };
 
