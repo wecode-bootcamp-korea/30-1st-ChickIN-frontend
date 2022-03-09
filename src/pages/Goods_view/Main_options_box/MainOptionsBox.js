@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import './MainOptionsBox.scss';
 
-function MainOptionsBox({ items }) {
+function priceToString(price) {
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+function MainOptionsBox({ items, setResultPrice }) {
   const [count, setCount] = useState(1);
   const maxCount = 10;
   const minCount = 1;
-  const oldPrice = items.result.old_price;
-  const resultPrice = oldPrice * count;
-
+  const productPrice = items.price;
   const onIncreaseCount = () => {
     if (count < maxCount) setCount(count + 1);
     else if (count > maxCount) setCount(maxCount);
@@ -15,12 +16,13 @@ function MainOptionsBox({ items }) {
   const onDecreaseCount = () => {
     if (count > minCount) setCount(count - 1);
   };
+  setResultPrice(productPrice * count);
 
   return (
     <form>
       <div className="option_total_area">
         <div className="order_product_option_display_area">
-          <span className="product_name">{items.result.title}</span>
+          <span className="product_name">{items.name}</span>
           <div className="product_price">
             <span className="product_count">
               <input className="input_text_goodsCnt" value={count} readOnly />
@@ -43,8 +45,7 @@ function MainOptionsBox({ items }) {
                 </div>
               </span>
             </span>
-
-            <em>{resultPrice} 원</em>
+            <em>{priceToString(productPrice * count)} 원</em>
           </div>
         </div>
       </div>

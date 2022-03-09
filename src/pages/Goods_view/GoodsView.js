@@ -1,108 +1,130 @@
-import React, { useState } from 'react';
-import './GoodsView.scss';
-import './mock.json';
+import React, { useState, useEffect } from 'react';
 import MainOptionsBox from './Main_options_box/MainOptionsBox';
 import SubOptionsBox from './Sub_options_box/SubOptionsBox';
+import './GoodsView.scss';
+import './mock.json';
+import { API } from '../../config';
 
-function GoodsView({ items }) {
-  const [isShow, setIsShow] = useState(false);
+const OPTION_OBJECT = {
+  '껍질 제거': 1000,
+  시즈닝: 2000,
+  '양념소스 추가': 1000,
+};
+function priceToString(price) {
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+function GoodsView() {
+  const [isShowOptionBox, setIsShowOptionBox] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState();
-  const {
-    title,
-    discount,
-    old_price,
-    new_price,
-    images,
-    description,
-    options,
-  } = items.result;
+  const [resultPrice, setResultPrice] = useState(0);
+  const [productData, setProductData] = useState(null);
+  // const intNumber = parseInt(productData.price);
+  // const params = useParams();
+  useEffect(() => {
+    // fetch('http://localhost:3000/data/mock.json')
+    // fetch('http://10.58.7.0:8000/products/1')
+    fetch('http://192.168.200.147:8000/products/1')
+      .then(res => res.json())
+      // .then(data => console.log(data));
+      .then(data => setProductData(data.data));
+  }, []);
 
   return (
-    <div>
-      <div className="product_detail_container">
-        <div className="inner_wrap">
-          <div className="detail_top">
-            <div className="detail_left">
-              <div className="detail_image_container">
-                <div className="detail_image_wrapper">
-                  <img src={images[0].image_url} alt="chicken_image" />
-                  <img src={images[1].image_url} alt="chicken_image" />
-                  <img src={images[2].image_url} alt="chicken_image" />
+    productData !== null && (
+      <div>
+        <div className="product_detail_container">
+          <div className="inner_wrap">
+            <div className="detail_top">
+              <div className="detail_left">
+                <div className="detail_image_container">
+                  <div className="detail_image_wrapper">
+                    <img src={productData.image[0]} />
+                    <img src={productData.image[1]} />
+                    <img src={productData.image[2]} />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="detail_right">
-              <div className="detail_information">
-                <div className="detail_information_title">{title}</div>
-                <div className="detail_information_wrapper">
-                  <div className="product_price_wrapper">
-                    <div className="product_discount">
-                      <span className="discount_price">{discount}</span>
-                      <span className="old_price">{old_price}</span>
+              <div className="detail_right">
+                <div className="detail_information">
+                  <div className="detail_information_title">
+                    {`${productData.name}`}
+                  </div>
+                  <div className="detail_information_wrapper">
+                    <div className="product_price_wrapper">
+                      <div className="product_new_price">
+                        {priceToString(parseInt(productData.price))} 원
+                      </div>
                     </div>
-                    <div className="product_new_price">{new_price}</div>
                   </div>
-                </div>
-                <div className="product_description">{description}</div>
-                <div className="product_option">
-                  <div className="choice_number_option">
-                    <select className="option">
-                      <option className="1_pack" value="2">
-                        {title}
-                      </option>
-                    </select>
+                  <div className="product_description">
+                    {`${productData.description}`}
                   </div>
-                  <div className="choice_add_option">
-                    <select
-                      className="option"
-                      onChange={e => {
-                        setSelectedOptions(e.target.value);
-                        e.target.value !== ''
-                          ? setIsShow(true)
-                          : setIsShow(false);
-                      }}
-                    >
-                      <option value="">{options[0].option_name}</option>
-                      <option value="선물 포장1">
-                        {options[1].option_name}
-                      </option>
-                      <option value="선물 포장2">
-                        {options[2].option_name}
-                      </option>
-                      <option value="선물 포장3">
-                        {options[3].option_name}
-                      </option>
-                      <option value="선물 포장4">
-                        {options[4].option_name}
-                      </option>
-                      <option value="선물 포장5">
-                        {options[5].option_name}
-                      </option>
-                    </select>
-                  </div>
-                  <MainOptionsBox items={items} />
-                  {isShow === true ? (
-                    <SubOptionsBox selectedOptions={selectedOptions} />
-                  ) : null}
-                  <div className="buy_button_wrapper">
-                    <button type="butotn">장바구니</button>
-                    <button type="butotn">바로 구매</button>
-                  </div>
-                  <div className="total_price">
-                    <p className="total">
-                      <strong>총 구매 금액 : </strong>
-                      <strong>{} </strong>
-                    </p>
+                  <div className="product_option">
+                    <div className="choice_number_option">
+                      <select className="option">
+                        <option className="1_pack" value="2">
+                          {`${productData.name}`}
+                        </option>
+                      </select>
+                    </div>
+                    <div className="choice_add_option">
+                      <select
+                        className="option"
+                        onChange={e => {
+                          setSelectedOptions(e.target.value);
+                          e.target.value !== ''
+                            ? setIsShowOptionBox(true)
+                            : setIsShowOptionBox(false);
+                        }}
+                      >
+                        <option value="">추가옵션</option>
+                        <option value="껍질 제거">
+                          {`${productData.option[0].name}`}
+                        </option>
+                        <option value="시즈닝">
+                          {`${productData.option[1].name}`}
+                        </option>
+                        <option value="양념소스 추가">
+                          {`${productData.option[2].name}`}
+                        </option>
+                      </select>
+                    </div>
+                    <MainOptionsBox
+                      items={productData}
+                      setResultPrice={setResultPrice}
+                    />
+                    {isShowOptionBox && (
+                      <SubOptionsBox selectedOptions={selectedOptions} />
+                    )}
+                    <div className="buy_button_wrapper">
+                      <button type="butotn">장바구니</button>
+                      <button type="butotn">
+                        {/* <button type="butotn" onClick={handleSubmit}> */}
+                        {/* Cart */}
+                        바로 구매
+                      </button>
+                    </div>
+                    <div className="total_price">
+                      <p className="total">
+                        <strong>총 구매 금액 : </strong>
+                        <strong>
+                          {priceToString(
+                            (OPTION_OBJECT[selectedOptions] || '') + resultPrice
+                          )}
+                        </strong>
+                        <strong> 원</strong>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            {/* <!— 댓글구현 —> */}
+            <div className="detail_bottom" />
           </div>
-          {/* <!— 댓글구현 —> */}
-          <div className="detail_bottom" />
         </div>
       </div>
-    </div>
+    )
   );
 }
 
