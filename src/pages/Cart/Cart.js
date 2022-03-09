@@ -22,7 +22,7 @@ const Cart = () => {
                   <tr>
                     <td className="td_product">
                       <div className="td_product_content">
-                        <img className="td_product_image" />
+                        <div className="td_product_image" />
                         <div className="td_product_name">한우 채끝 150g</div>
                       </div>
                     </td>
@@ -36,7 +36,7 @@ const Cart = () => {
                   <tr>
                     <td className="td_option">
                       <div className="td_option_content">
-                        <img className="td_option_image" />
+                        <div className="td_option_image" />
                         <div className="td_option_name">
                           (옵션) 새송이 & 미니 파프리카(180g)
                         </div>
