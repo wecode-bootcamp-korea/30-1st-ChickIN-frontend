@@ -42,38 +42,9 @@
       border-radius: 0;
       border-color: #fff;
     }
-
-    .filterSort {
-      display: block;
-      padding: 0;
-      margin: 0;
-
-      li {
-        display: inline-block;
-        margin-top: 23px;
-        margin-right: 0px;
-        padding: 0px;
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 20px;
-        color: #b4b4b4;
-        div {
-          background-color: transparent;
-        }
-      }
-
-      .category-span {
-        display: inline-block;
-        margin: 0px 20px;
-        vertical-align: middle;
-        background-color: #b4b4b4;
-        width: 1px;
-        height: 16px;
-      }
-    }
   }
 
-  body {
+  .main_section {
     display: flex;
 
     .section_categories_menu_bar {

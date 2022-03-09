@@ -2,8 +2,9 @@ import React from 'react';
 import './GoodsCard.scss';
 
 function GoodsCard(props) {
+  console.log(`props: ${props}`);
   return props.CardsList.map(
-    ({ product_id, product_img, product_name, product_price }) => (
+    ({ product_id, product_name, product_price, product_img }) => (
       <li className="product" key={product_id}>
         <div
           className="product_img_Wrap"
