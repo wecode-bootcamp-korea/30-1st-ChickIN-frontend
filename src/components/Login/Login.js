@@ -19,7 +19,7 @@ const Login = () => {
   const fetchLogin = e => {
     e.preventDefault();
 
-    fetch(API.signin, {
+    fetch(API.login, {
       method: 'POST',
       body: JSON.stringify({
         email: idValue,
