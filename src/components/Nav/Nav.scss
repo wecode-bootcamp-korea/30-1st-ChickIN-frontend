@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
 /* Global */
 :root {
   /* Color */
@@ -34,11 +36,13 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  background-color: lightblue;
+  background-color: white;
   color: var(--color-black);
   padding: 15px;
+  border-bottom: lightgray;
   transition: all var(--animation-duration) ease-in-out;
   z-index: 10;
+  font-family: ‘Noto Sans KR’, sans-serif;
   /* navbar 은 무슨일이있어도 제일 위에있어야되니까. z-index 10  */
 
   .nav_logo {
@@ -49,17 +53,21 @@
     align-items: center;
     width: 15%;
     margin: 14px 10px;
+    .logo {
+      width: 300px;
+      padding-left: 60px;
+    }
   }
 
   .nav_service_menu {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: pink;
-    width: 65%;
+    background-color: white;
+    border: none;
+    width: 900px;
     margin: 0px;
     padding: 0px;
-    border: 1px solid black;
 
     .nav_service_list {
       display: flex;
@@ -72,14 +80,13 @@
       .nav_service_item {
         padding: 8px 12px;
         margin: 0 10px;
-        font-size: var(--font-regular);
+        font-size: 28px;
         cursor: pointer;
-        border-radius: var(--size-border-radius);
-
-        &:hover .drop_down_menu {
-          opacity: 1;
-          visibility: visible;
-        }
+        // border-radius: var(--size-border-radius);
+      }
+      &:hover .drop_down_menu {
+        opacity: 1;
+        visibility: visible;
       }
 
       & a {
@@ -91,9 +98,11 @@
   }
 
   .drop_down_menu {
+    display: flex;
+    justify-content: center;
     position: absolute;
     left: 0px;
-    top: 100px;
+    top: 116px;
     background-color: white;
     opacity: 0;
     visibility: hidden;
@@ -102,15 +111,18 @@
 
     & li {
       padding: 16px 28px;
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid gray;
 
-      & a {
-        color: royalblue;
+      & .section_option {
+        color: darkgray;
         text-decoration: none;
       }
     }
 
     &:hover .drop_down_menu_under_chicken {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       opacity: 1;
       visibility: visible;
     }
@@ -118,15 +130,17 @@
 
   .drop_down_menu_under_chicken {
     position: absolute;
-    background-color: yellow;
+    top: 78px;
+    left: 645px;
+    background-color: white;
     opacity: 0;
     visibility: hidden;
     & li {
       padding: 16px 28px;
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid lightgray;
 
       & a {
-        color: green;
+        color: lightgray;
         text-decoration: none;
       }
     }
@@ -137,10 +151,11 @@
     justify-content: space-between;
     width: 20%;
     align-items: center;
-    background-color: Green;
+    background-color: white;
     padding: 8px 24px;
     margin: 0 4px;
-    font-size: 25px;
+    margin-right: 60px;
+    font-size: 30px;
     cursor: pointer;
     border-radius: var(--size-border-radius);
   }

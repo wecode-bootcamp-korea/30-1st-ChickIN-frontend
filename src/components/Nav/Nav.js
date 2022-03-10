@@ -9,16 +9,14 @@ import { useNavigate } from 'react-router-dom';
 
 function Nav() {
   const navigate = useNavigate();
-  const goToDetail = () => {
-    navigate(`/goodslist`);
+  const goToDetail = path => {
+    navigate(path);
   };
 
   return (
     <nav className="nav">
       <div className="nav_logo">
-        <a href="#">
-          <h1>Chick.IN</h1>
-        </a>
+        <img className="logo" src="/images/logo.png" />
       </div>
       <div className="nav_service_menu">
         <ul className="nav_service_list">
@@ -31,10 +29,15 @@ function Nav() {
                 </a>
                 <ul className="drop_down_menu_under_chicken">
                   <li>
-                    <div onClick={() => goToDetail()}> 구이용</div>
+                    <a
+                      className="section_option"
+                      onClick={() => goToDetail('/products')}
+                    >
+                      구이용
+                    </a>
                   </li>
                   <li>
-                    <a href="#">요리용</a>
+                    <a className="section_option">요리용</a>
                   </li>
                 </ul>
               </li>
@@ -74,9 +77,9 @@ function Nav() {
         <a href="#">
           <FaSistrix />
         </a>
-        <a href="#">
+        <div onClick={() => goToDetail('/login')}>
           <FaUser />
-        </a>
+        </div>
         <a href="#">
           <FaShoppingCart />
         </a>
