@@ -10,12 +10,13 @@ function GoodsList() {
   const location = useLocation();
   const [itemList, setItemList] = useState([]);
   const [listName, setListName] = useState('구이용');
-  const BASE_URL = 'http://10.58.6.148:8000';
-  const query_obj = {
-    query_for_meat: '?main_category=1',
+  const [queryData, setQueryData] = useState({
+    query_for_meat: 'main_category=1',
     query_for_kind: '',
-    query_for_sort: 'sort=id',
-  };
+    query_for_sort: '',
+  });
+
+  const BASE_URL = 'http://10.58.6.148:8000';
 
   const goToDetail = productId => {
     navigate(`/goodsview/${productId}`);
@@ -30,27 +31,29 @@ function GoodsList() {
   }, []);
 
   const updateSubCategory = new_kind => {
-    query_obj.query_for_kind = new_kind;
-    updateQuery(query_obj);
+    const new_query = queryData;
+    new_query.query_for_kind = new_kind;
+    updateQuery(new_query);
   };
 
-  const updateSort = new_sort => {
-    query_obj.query_for_kind = new_sort;
-    updateQuery(query_obj);
+  const updateSort = e => {
+    const new_query = queryData;
+    new_query.query_for_sort = e.target.value;
+    updateQuery(new_query);
   };
 
   const changeSection = nameParam => {
     setListName(nameParam);
     if (nameParam === '구이용') {
-      query_obj.query_for_meat = 'main_category=1';
+      setQueryData({ ...queryData, query_for_meat: 'main_category=1' });
     } else if (nameParam === '요리용') {
-      query_obj.query_for_meat = 'main_category=2';
+      setQueryData({ ...queryData, query_for_meat: 'main_category=2' });
     } else if (nameParam === '더그로인') {
-      query_obj.query_for_meat = 'main_category=3';
+      setQueryData({ ...queryData, query_for_meat: 'main_category=3' });
     } else {
-      query_obj.query_for_meat = 'main_category=1';
+      setQueryData({ ...queryData, query_for_meat: 'main_category=1' });
     }
-    updateQuery(query_obj);
+    updateQuery(queryData);
   };
 
   const updateQuery = new_query => {
@@ -71,13 +74,11 @@ function GoodsList() {
       <div className="product_list_header">
         <div className="categories_title">
           <h2>{listName}</h2>
-          <select className="filter_button">
-            <option onClick={() => updateSort('sort=id')}>상품 정렬하기</option>
-            <option onClick={() => updateSort('sort=rec')}>추천순</option>
-            <option onClick={() => updateSort('sort=desc')}>
-              가격 낮은 순
-            </option>
-            <option onClick={() => updateSort('sort=ase')}>가격 높은 순</option>
+          <select className="filter_button" onChange={updateSort}>
+            <option value="sort=id">상품 정렬하기</option>
+            <option value="sort=rec">추천순</option>
+            <option value="sort=desc">가격 낮은 순</option>
+            <option value="sort=ase">가격 높은 순</option>
           </select>
         </div>
         <div>

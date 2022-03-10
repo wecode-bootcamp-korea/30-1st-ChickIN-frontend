@@ -9,27 +9,27 @@ function SubCategories(props) {
       </li>
       <span className="category-span"></span>
       <li>
-        <div onClick={() => props.updateSubCategory('&sub_category=1')}>
+        <div onClick={() => props.updateSubCategory('sub_category=1')}>
           다리
         </div>
       </li>
       <span className="category-span"></span>
       <li>
-        <div onClick={() => props.updateSubCategory('&sub_category=2')}>윙</div>
+        <div onClick={() => props.updateSubCategory('sub_category=2')}>윙</div>
       </li>
       <span className="category-span"></span>
       <li>
-        <div onClick={() => props.updateSubCategory('&sub_category=3')}>봉</div>
+        <div onClick={() => props.updateSubCategory('sub_category=3')}>봉</div>
       </li>
       <span className="category-span"></span>
       <li>
-        <div onClick={() => props.updateSubCategory('&sub_category=4')}>
+        <div onClick={() => props.updateSubCategory('sub_category=4')}>
           닭가슴살
         </div>
       </li>
       <span className="category-span"></span>
       <li>
-        <div onClick={() => props.updateSubCategory('&sub_category=5')}>
+        <div onClick={() => props.updateSubCategory('sub_category=5')}>
           특수부위
         </div>
       </li>
