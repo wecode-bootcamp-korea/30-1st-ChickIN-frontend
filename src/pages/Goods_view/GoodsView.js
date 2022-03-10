@@ -6,18 +6,13 @@ import MainOptionsBox from './Main_options_box/MainOptionsBox';
 import SubOptionsBox from './Sub_options_box/SubOptionsBox';
 import './GoodsView.scss';
 
-const OPTION_OBJECT = {
-  '껍질 제거': 1000,
-  시즈닝: 2000,
-  '양념소스 추가': 1000,
-};
-
 function priceToString(price) {
   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
+
 function GoodsView() {
   const [isShowOptionBox, setIsShowOptionBox] = useState(false);
-  const [selectedOptions, setSelectedOptions] = useState();
+  const [selectedOptionId, setselectedOptionId] = useState();
   const [resultPrice, setResultPrice] = useState(0);
   const [productData, setProductData] = useState(null);
   const [showMoreButton, setShowMoreButton] = useState(false);
@@ -25,16 +20,15 @@ function GoodsView() {
   const navigate = useNavigate();
 
   const CartButtonHandler = () => {
-    fetch(API.cartview, {
+    fetch(API.carts, {
       method: 'POST',
       headers: {
         Authorization: localStorage.getItem('token'),
       },
       body: JSON.stringify({
-        product_id: params.id, // FIXME : 백엔드 데이터 저장 잘 되는지 여쭤보기
-        option_ids: selectedOptions,
+        product_id: productData.id,
+        option_ids: [selectedOptionId],
         quantity: resultPrice / productData.price,
-        //이름, 수량, 옵션(숫자)
       }),
     })
       .then(res => res.json())
@@ -46,7 +40,10 @@ function GoodsView() {
     paymentPageMoveHandler();
   };
 
-  // const params = useParams();
+  const orderNow = () => {
+    alert('바로 구매 완료');
+  };
+
   useEffect(() => {
     // fetch('http://localhost:3000/data/mock.json')
     // fetch('http://10.58.7.79:8000/products/1');
@@ -55,6 +52,10 @@ function GoodsView() {
       // .then(data => console.log(data));
       .then(data => setProductData(data.data));
   }, []);
+
+  const selectedOption = productData?.option.find(
+    el => el.id === Number(selectedOptionId)
+  );
 
   return (
     productData !== null && (
@@ -79,7 +80,7 @@ function GoodsView() {
                   <div className="detail_information_wrapper">
                     <div className="product_price_wrapper">
                       <div className="product_price">
-                        {priceToString(parseInt(productData.price))} 원
+                        {Number(productData.price).toLocaleString()} 원
                       </div>
                     </div>
                   </div>
@@ -108,40 +109,31 @@ function GoodsView() {
                       <select
                         className="option"
                         onChange={e => {
-                          setSelectedOptions(e.target.value);
+                          setselectedOptionId(e.target.value);
                           e.target.value !== ''
                             ? setIsShowOptionBox(true)
                             : setIsShowOptionBox(false);
                         }}
                       >
-                        <option value="">추가옵션</option>
-                        <option value="껍질 제거">
+                        {productData.option.map(el => {
+                          return (
+                            <option value={el.id} key={el.id}>
+                              {el.name} {Number(el.price).toLocaleString()}원
+                            </option>
+                          );
+                        })}
+                        {/* <option value="0">
                           {`${productData.option[0].name}`}
-                          {'(' +
-                            priceToString(
-                              parseInt(`${productData.option[0].price}`)
-                            ) +
-                            '원' +
-                            ')'}
+                          {`${productData.option[0].price}` + '원'}
                         </option>
-                        <option value="시즈닝">
+                        <option value="1">
                           {`${productData.option[1].name}`}
-                          {'(' +
-                            priceToString(
-                              parseInt(`${productData.option[1].price}`)
-                            ) +
-                            '원' +
-                            ')'}
+                          {`${productData.option[1].price}` + '원'}
                         </option>
-                        <option value="양념소스 추가">
+                        <option value="2">
                           {`${productData.option[2].name}`}
-                          {'(' +
-                            priceToString(
-                              parseInt(`${productData.option[2].price}`)
-                            ) +
-                            '원' +
-                            ')'}
-                        </option>
+                          {`${productData.option[2].price}` + '원'}
+                        </option> */}
                       </select>
                     </div>
                     <MainOptionsBox
@@ -149,7 +141,10 @@ function GoodsView() {
                       setResultPrice={setResultPrice}
                     />
                     {isShowOptionBox && (
-                      <SubOptionsBox selectedOptions={selectedOptions} />
+                      <SubOptionsBox
+                        optionName={selectedOption.name}
+                        optionPrice={selectedOption.price}
+                      />
                     )}
                     <div className="buy_button_wrapper">
                       <button
@@ -159,15 +154,17 @@ function GoodsView() {
                       >
                         장바구니
                       </button>
-                      {/* <button type="butotn" className="oderNow"> */}
-                      <button type="butotn">바로 구매</button>
+
+                      <button onClick={orderNow}>바로 구매</button>
                     </div>
                     <div className="total_price">
                       <p className="total">
                         <strong>총 구매 금액 : </strong>
                         <strong>
+                          {/* selectedOption.price로 수정할 것*/}
+
                           {priceToString(
-                            (OPTION_OBJECT[selectedOptions] || '') + resultPrice
+                            (Number(selectedOption?.price) || '') + resultPrice
                           )}
                         </strong>
                         <strong> 원</strong>
