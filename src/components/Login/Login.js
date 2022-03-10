@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
-// import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { API } from '../../config';
 import './Login.scss';
 
-// const ID = 'hslee72@gmail.com';
-// const PW = '1234';
-
-// let regExp =
-//   /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-
 const Login = () => {
+  const navigate = useNavigate();
   const [idValue, setIdValue] = useState('');
   const [pwValue, setPwValue] = useState('');
 
@@ -19,13 +15,11 @@ const Login = () => {
   const updatePw = e => {
     setPwValue(e.target.value);
   };
-  console.log(pwValue);
 
-  const submitHandler = e => {
+  const fetchLogin = e => {
     e.preventDefault();
-    console.log('submit');
 
-    fetch('http://10.58.63.9:8000/users/login', {
+    fetch(API.login, {
       method: 'POST',
       body: JSON.stringify({
         email: idValue,
@@ -36,7 +30,7 @@ const Login = () => {
       .then(result => {
         if (result.message === 'SUCCESS') {
           alert('로그인 성공!');
-          // Navigate('/Main');
+          navigate('/Main');
         } else {
           alert('가입된 회원 정보가 없습니다');
         }
@@ -46,13 +40,12 @@ const Login = () => {
   return (
     <div className="login">
       <div className="login_header">
-        <div className="login_button_close" />
         <div className="login_title">로그인 및 회원가입</div>
       </div>
       <div className="login_body">
         <div className="welcome_text">
           <p>안녕하세요,</p>
-          <p>회원가입하고 ChickIN 혜택을 받으세요</p>
+          <p>회원가입하고 Chick'in 혜택을 받으세요</p>
         </div>
         <form className="form_login" method="post" action="">
           <div className="login_form_wrapper">
@@ -72,17 +65,13 @@ const Login = () => {
                 onChange={updatePw}
               />
             </div>
-            <button
-              type="submit"
-              className="button_login"
-              onClick={submitHandler}
-            >
+            <button type="submit" className="button_login" onClick={fetchLogin}>
               로그인 하기
             </button>
           </div>
-          <a href="/sign_up" className="sign_up_button">
+          <p className="sign_up_button">
             ChickIN 계정이 없으신가요? 계정을 만드세요!
-          </a>
+          </p>
         </form>
       </div>
     </div>
