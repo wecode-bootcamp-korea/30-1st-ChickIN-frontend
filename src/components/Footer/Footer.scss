@@ -5,13 +5,15 @@
 }
 
 .company_information {
+  position: fixed;
+  bottom: 0;
   background-color: black;
   margin: 0;
+  width: 100%;
   color: rgba(204, 204, 204, 0.8);
   font-weight: 300;
   font-size: 12px;
   line-height: 160%;
-  word-break: keep-all;
   padding: 30px 120px 30px 120px;
 
   .company_name {
