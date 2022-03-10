@@ -1,0 +1,74 @@
+form {
+  .sub_option_total_area {
+    border: 1px solid black;
+    padding: 5px;
+    margin-top: 15px;
+
+    .sub_option_display_area {
+      display: table;
+      width: 100%;
+      padding: 10px;
+
+      .sub_option_name {
+        display: table-cell;
+        width: 55%;
+        text-align: center;
+        vertical-align: middle;
+        font-weight: 800;
+        font-size: 25px;
+      }
+
+      .sub_option_price {
+        display: table-cell;
+        width: 45%;
+        text-align: right;
+        vertical-align: middle;
+
+        .sub_option_count {
+          .input_text_goodsCnt {
+            width: 70px;
+            height: 44px;
+            font-size: 15px;
+            font-weight: 400;
+            text-align: center;
+            float: left;
+          }
+          span {
+            float: left;
+            margin: 0 0 0 -9px;
+            .button_box {
+              width: 10px;
+              height: 4px;
+
+              .up_button {
+              }
+              .down_button {
+              }
+            }
+          }
+        }
+        em {
+          display: inline-block;
+          font-size: 25px;
+          min-width: 90px;
+          text-align: center;
+          padding: 10px 10px 10px 2px;
+        }
+      }
+      .delete_button {
+        display: flex;
+        align-items: center;
+        width: 20px;
+        height: 20px;
+        margin: 10px;
+        padding: 0;
+        button {
+          border: none;
+          font-size: 30px;
+          color: gray;
+          background-color: inherit;
+        }
+      }
+    }
+  }
+}
