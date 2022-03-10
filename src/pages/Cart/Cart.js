@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Cart.scss';
 import CartList from './CartList';
 import PriceSum from './PriceSum';
-import CARTLIST from './CartListData';
+import { API } from '../../config';
 
 const Cart = () => {
+  const [cartItems, setCartItems] = useState([]);
   const confirmOrder = () => {
     alert('주문이 완료되었습니다!');
   };
+
+  useEffect(() => {
+    fetch(API.cart, {
+      method: 'GET',
+      headers: {
+        Authorization: sessionStorage.getItem('token'),
+      },
+    })
+      .then(res => res.json())
+      .then(res => setCartItems(res.result));
+  }, []);
 
   return (
     <div className="cart">
@@ -18,12 +30,12 @@ const Cart = () => {
         <div className="cart_container">
           <div className="cart_content_list">
             <div class="order_table">
-              {CARTLIST.map(item => (
+              {cartItems.map(item => (
                 <CartList key={item.id} item={item} />
               ))}
             </div>
           </div>
-          <PriceSum items={CARTLIST} />
+          <PriceSum items={cartItems} />
           <div className="delivery_wrap">
             <div className="early_bird_desc">
               <p className="title">주문 전 꼭 확인해주세요!</p>
