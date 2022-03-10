@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router';
+import { useNavigate } from 'react-router';
+import { API } from '../../config';
 import MainOptionsBox from './Main_options_box/MainOptionsBox';
 import SubOptionsBox from './Sub_options_box/SubOptionsBox';
 import './GoodsView.scss';
-import { API } from '../../config';
 
 const OPTION_OBJECT = {
   '껍질 제거': 1000,
@@ -19,6 +21,30 @@ function GoodsView() {
   const [resultPrice, setResultPrice] = useState(0);
   const [productData, setProductData] = useState(null);
   const [showMoreButton, setShowMoreButton] = useState(false);
+  const params = useParams();
+  const navigate = useNavigate();
+
+  const CartButtonHandler = () => {
+    fetch(API.cartview, {
+      method: 'POST',
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+      body: JSON.stringify({
+        product_id: params.id, // FIXME : 백엔드 데이터 저장 잘 되는지 여쭤보기
+        option_ids: selectedOptions,
+        quantity: resultPrice / productData.price,
+        //이름, 수량, 옵션(숫자)
+      }),
+    })
+      .then(res => res.json())
+      .then(alert('장바구니에 담겼습니다.'));
+
+    const paymentPageMoveHandler = () => {
+      navigate('/cartview');
+    };
+    paymentPageMoveHandler();
+  };
 
   // const params = useParams();
   useEffect(() => {
@@ -91,12 +117,30 @@ function GoodsView() {
                         <option value="">추가옵션</option>
                         <option value="껍질 제거">
                           {`${productData.option[0].name}`}
+                          {'(' +
+                            priceToString(
+                              parseInt(`${productData.option[0].price}`)
+                            ) +
+                            '원' +
+                            ')'}
                         </option>
                         <option value="시즈닝">
                           {`${productData.option[1].name}`}
+                          {'(' +
+                            priceToString(
+                              parseInt(`${productData.option[1].price}`)
+                            ) +
+                            '원' +
+                            ')'}
                         </option>
                         <option value="양념소스 추가">
                           {`${productData.option[2].name}`}
+                          {'(' +
+                            priceToString(
+                              parseInt(`${productData.option[2].price}`)
+                            ) +
+                            '원' +
+                            ')'}
                         </option>
                       </select>
                     </div>
@@ -108,12 +152,15 @@ function GoodsView() {
                       <SubOptionsBox selectedOptions={selectedOptions} />
                     )}
                     <div className="buy_button_wrapper">
-                      <button type="butotn">장바구니</button>
-                      <button type="butotn">
-                        {/* <button type="butotn" onClick={handleSubmit}> */}
-                        {/* Cart */}
-                        바로 구매
+                      <button
+                        type="button"
+                        className="cartButton"
+                        onClick={CartButtonHandler}
+                      >
+                        장바구니
                       </button>
+                      {/* <button type="butotn" className="oderNow"> */}
+                      <button type="butotn">바로 구매</button>
                     </div>
                     <div className="total_price">
                       <p className="total">
