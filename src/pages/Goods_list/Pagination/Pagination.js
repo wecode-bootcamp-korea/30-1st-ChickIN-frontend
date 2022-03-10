@@ -11,7 +11,6 @@ function Pagination({ updateOffset }) {
         2
       </button>
       <button className="pageBt" onClick={() => updateOffset(2)}>
-        {' '}
         3
       </button>
       <button className="pageBt" onClick={() => updateOffset(3)}>

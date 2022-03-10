@@ -13,7 +13,7 @@ function GoodsList() {
   const [sortOption, setSortOption] = useState('');
   const [navigateParam, setNavigateParam] = useState('');
   const navigate = useNavigate();
-  const location = useLocation();
+  // const location = useLocation();
   // const decodeuri = decodeURI(location.search);
   const BASE_URL = 'http://10.58.6.148:8000';
   // console.log(`decode: ${decodeuri}`);
@@ -26,6 +26,7 @@ function GoodsList() {
 
   useEffect(() => {
     fetch(`${BASE_URL}/products`)
+      // fetch('http://localhost:3000/data/mock.json')
       .then(res => res.json())
       .then(data => {
         console.log(data);
@@ -65,23 +66,20 @@ function GoodsList() {
       `products/${meatOptionPath}${subCategoryOption}${sortOption}`
     );
     updateUrl(navigateParam);
+    console.log(navigateParam);
   }, [meatOptionPath, subCategoryOption, sortOption]);
 
   const updateUrl = changeUrl => {
     navigate(`/${changeUrl}`);
   };
 
-  /* URL 변경 하는 부분 클릭시에 변함 */
-  useEffect(() => {
-    navigate(`/${navigateParam}`);
-  }, [navigateParam]);
-
   useEffect(() => {
     fetch(`${BASE_URL}/${navigateParam}`)
+      // fetch('http://localhost:3000/data/mock.json2')
       .then(res => res.json())
       .then(data => setItemList(data));
-    //data 받을때는 메세지랑 같이 오니까 results로 넣어줄것
-  }, [location.search]);
+    //datasearch 받을때는 메세지랑 같이 오니까 results로 넣어줄것
+  }, [navigateParam]);
 
   if (!itemList.length) {
     return null;
