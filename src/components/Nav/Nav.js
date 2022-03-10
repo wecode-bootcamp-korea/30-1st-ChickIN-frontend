@@ -5,8 +5,14 @@ import {
   FaSistrix,
   FaShoppingCart,
 } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 function Nav() {
+  const navigate = useNavigate();
+  const goToDetail = () => {
+    navigate(`/goodslist`);
+  };
+
   return (
     <nav className="nav">
       <div className="nav_logo">
@@ -17,7 +23,7 @@ function Nav() {
       <div className="nav_service_menu">
         <ul className="nav_service_list">
           <li className="nav_service_item active">
-            <a href="#">구매</a>
+            <div>구매</div>
             <ul className="drop_down_menu">
               <li className="meat_option">
                 <a href="#" className="chicken">
@@ -25,7 +31,7 @@ function Nav() {
                 </a>
                 <ul className="drop_down_menu_under_chicken">
                   <li>
-                    <a href="#">구이용</a>
+                    <div onClick={() => goToDetail()}> 구이용</div>
                   </li>
                   <li>
                     <a href="#">요리용</a>
