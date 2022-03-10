@@ -212,7 +212,7 @@ const SignUp = () => {
           <div className="button">
             <button className="cancel">취소</button>
             <button
-              className={`${isValidForm ? 'button_activate' : 'invalid'}`}
+              className={isValidForm ? 'button_activate' : 'invalid'}
               disabled={!isValidForm}
               onClick={submitHandler}
             >
