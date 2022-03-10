@@ -1,8 +1,16 @@
+import React from 'react';
 import './Cart.scss';
+import CartList from './CartList';
+import PriceSum from './PriceSum';
+import CARTLIST from './CartListData';
 
 const Cart = () => {
+  const confirmOrder = () => {
+    alert('주문이 완료되었습니다!');
+  };
+
   return (
-    <div className="Cart">
+    <div className="cart">
       <div className="content_box">
         <div className="content_title">
           <h2>장바구니</h2>
@@ -10,78 +18,12 @@ const Cart = () => {
         <div className="cart_container">
           <div className="cart_content_list">
             <div class="order_table">
-              <table>
-                <thead>
-                  <tr>
-                    <th className="th_product">상품/옵션</th>
-                    <th className="th_product_quantity">수량</th>
-                    <th className="th_price">상품 금액</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="td_product">
-                      <div className="td_product_content">
-                        <div className="td_product_image" />
-                        <div className="td_product_name">한우 채끝 150g</div>
-                      </div>
-                    </td>
-                    <td className="td_product_quantity">
-                      <p>1개</p>
-                    </td>
-                    <td className="td_product_price">
-                      <p>100,500원</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="td_option">
-                      <div className="td_option_content">
-                        <div className="td_option_image" />
-                        <div className="td_option_name">
-                          (옵션) 새송이 & 미니 파프리카(180g)
-                        </div>
-                      </div>
-                    </td>
-                    <td className="td_option_quantity">
-                      <p>1개</p>
-                    </td>
-                    <td className="td_option_price">
-                      <p>6,000원</p>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              {CARTLIST.map(item => (
+                <CartList key={item.id} item={item} />
+              ))}
             </div>
           </div>
-          <div className="price_sum">
-            <div className="goods_total_box">
-              <div className="goods_price_box">
-                <div className="goods_price_header">
-                  <p>총 상품 금액</p>
-                </div>
-                <div className="goods_price">
-                  <p>100,500원</p>
-                </div>
-              </div>
-              <span>+</span>
-              <div className="delivery_charge_box">
-                <div className="delivery_charge_header">
-                  <p>배송비</p>
-                </div>
-                <div className="delivery_charge">
-                  <p>2,500원</p>
-                </div>
-              </div>
-            </div>
-            <div className="total_price_box">
-              <div className="total_price_header">
-                <p>총 주문 금액</p>
-              </div>
-              <div className="total_price">
-                <p>103,000원</p>
-              </div>
-            </div>
-          </div>
+          <PriceSum items={CARTLIST} />
           <div className="delivery_wrap">
             <div className="early_bird_desc">
               <p className="title">주문 전 꼭 확인해주세요!</p>
@@ -100,7 +42,7 @@ const Cart = () => {
             </div>
           </div>
           <div className="button_wrap">
-            <button>주문하기</button>
+            <button onClick={confirmOrder}>주문하기</button>
           </div>
         </div>
       </div>
