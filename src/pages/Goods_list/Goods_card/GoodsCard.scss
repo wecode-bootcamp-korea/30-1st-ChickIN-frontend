@@ -2,17 +2,22 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  width: calc(25% - 11px);
+  width: 250px;
+  height: 312px;
   margin: 0 5px 10px 5px;
   border: 1px solid #eaeaea;
   cursor: pointer;
   overflow: hidden;
 
-  & img {
+  .product_img_Wrap {
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 20;
+
+    .product_img {
+      width: 248px;
+      height: 251px;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 20;
+    }
   }
   .content_wrap {
     position: relative;

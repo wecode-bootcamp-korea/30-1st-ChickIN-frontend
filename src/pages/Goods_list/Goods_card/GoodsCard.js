@@ -1,28 +1,20 @@
 import React from 'react';
 import './GoodsCard.scss';
 
-function GoodsCard(props) {
-  console.log(`props: ${props}`);
-  return props.CardsList.map(
-    ({ product_id, product_name, product_price, product_img }) => (
-      <li className="product" key={product_id}>
-        <div
-          className="product_img_Wrap"
-          onClick={() => props.goToDetail(product_id)}
-        >
-          <img alt="product" className="product_img" src={product_img} />
+function GoodsCard({ item, goToDetail }) {
+  const { id, name, thumbnail, price } = item;
+  return (
+    <li className="product" key={id}>
+      <div className="product_img_Wrap" onClick={() => goToDetail(id)}>
+        <img alt="product" className="product_img" src={thumbnail} />
+      </div>
+      <div className="content_wrap">
+        <div className="product_name" onClick={() => goToDetail(id)}>
+          {name}
         </div>
-        <div className="content_wrap">
-          <div
-            className="product_name"
-            onClick={() => props.goToDetail(product_id)}
-          >
-            {product_name}
-          </div>
-          <div className="product_price"> {product_price} </div>
-        </div>
-      </li>
-    )
+        <div className="product_price"> {price} </div>
+      </div>
+    </li>
   );
 }
 

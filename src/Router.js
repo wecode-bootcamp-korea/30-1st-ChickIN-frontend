@@ -13,7 +13,7 @@ function Router() {
       <Nav />
       <Routes>
         <Route path="/main" element={<Main />} />
-        <Route path="/goodslist" element={<GoodsList />} />
+        <Route path="/products" element={<GoodsList />} />
         <Route path="/goodsview/:goodsId" element={<GoodsView />} />
         <Route path="/login" element={<Login />} />
       </Routes>

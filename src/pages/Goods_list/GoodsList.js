@@ -6,19 +6,16 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 function GoodsList() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [itemList, setItemList] = useState([]);
   const [listName, setListName] = useState('구이용');
-  const [meatOptionPath, setMeatOptionPath] = useState('');
-  const [subCategoryOption, setSubCategoryOption] = useState(' ');
-  const [sortOption, setSortOption] = useState(' ');
-  const [navigateParam, setNavigateParam] = useState(' ');
-  const navigate = useNavigate();
-  // const location = useLocation();
-  // const decodeuri = decodeURI(location.search);
   const BASE_URL = 'http://10.58.6.148:8000';
-  // console.log(`decode: ${decodeuri}`);
-  // const nextQuestionMark = decodeuri.substr(1); // 쿼리스트링 값나오게끔! (? 다음부분)
-  // console.log(nextQuestionMark);
+  const query_obj = {
+    query_for_meat: '?main_category=1',
+    query_for_kind: '',
+    query_for_sort: 'sort=id',
+  };
 
   const goToDetail = productId => {
     navigate(`/goodsview/${productId}`);
@@ -26,78 +23,48 @@ function GoodsList() {
 
   useEffect(() => {
     fetch(`${BASE_URL}/products`)
-      // fetch('http://localhost:3000/data/mock.json')
       .then(res => res.json())
-      .then(data => {
-        console.log(data.products_list);
-        setItemList(data.products_list);
+      .then(res => {
+        setItemList(res.products_list);
       });
-    //data 받을때는 메세지랑 같이 오니까 results로 넣어줄것
   }, []);
 
-  // const chooseSubCategory = () => {
-  //   fetchForGrilled();
-  //   updateSubCategory('');
-  // };
-
-  const updateSubCategory = subCategoryNameParam => {
-    setSubCategoryOption(subCategoryNameParam);
-    setNavigateParam(
-      `products/${meatOptionPath}${subCategoryOption}${sortOption}`
-    );
-    updateUrl(navigateParam);
+  const updateSubCategory = new_kind => {
+    query_obj.query_for_kind = new_kind;
+    updateQuery(query_obj);
   };
 
-  const updateSort = sortParam => {
-    setSortOption(sortParam);
-    setNavigateParam(
-      `products/${meatOptionPath}${subCategoryOption}${sortOption}`
-    );
-    updateUrl(navigateParam);
+  const updateSort = new_sort => {
+    query_obj.query_for_kind = new_sort;
+    updateQuery(query_obj);
   };
 
   const changeSection = nameParam => {
     setListName(nameParam);
     if (nameParam === '구이용') {
-      setMeatOptionPath('?main_category=1');
+      query_obj.query_for_meat = 'main_category=1';
     } else if (nameParam === '요리용') {
-      setMeatOptionPath('?main_category=2');
+      query_obj.query_for_meat = 'main_category=2';
     } else if (nameParam === '더그로인') {
-      setMeatOptionPath('?main_category=3');
+      query_obj.query_for_meat = 'main_category=3';
     } else {
-      setMeatOptionPath('?main_category=1');
+      query_obj.query_for_meat = 'main_category=1';
     }
-
-    setNavigateParam(
-      `products/${meatOptionPath}${subCategoryOption}${sortOption}`
-    );
-    console.log(`navigateParam after click section : ${meatOptionPath}`);
-    updateUrl(navigateParam);
+    updateQuery(query_obj);
   };
 
-  // useEffect(() => {
-  //   setNavigateParam(
-  //     `products/${meatOptionPath}${subCategoryOption}${sortOption}`
-  //   );
-  //   updateUrl(navigateParam);
-  //   console.log(navigateParam);
-  // }, [meatOptionPath, subCategoryOption, sortOption]);
-
-  const updateUrl = changeUrl => {
-    navigate(changeUrl);
+  const updateQuery = new_query => {
+    navigate(
+      `?${new_query.query_for_meat}${new_query.query_for_kind}&${new_query.query_for_sort}`
+    );
   };
 
   useEffect(() => {
-    fetch(`${BASE_URL}/${navigateParam}`)
-      // fetch('http://localhost:3000/data/mock.json2')
+    console.log('location.search', location.search);
+    fetch(`${BASE_URL}/products${location.search}`)
       .then(res => res.json())
-      .then(data => setItemList(data));
-    //datasearch 받을때는 메세지랑 같이 오니까 results로 넣어줄것
-  }, [navigateParam]);
-
-  if (!itemList.length) {
-    return null;
-  }
+      .then(res => setItemList(res.products_list));
+  }, [location.search]);
 
   return (
     <section className="goods_list_page">
@@ -105,16 +72,12 @@ function GoodsList() {
         <div className="categories_title">
           <h2>{listName}</h2>
           <select className="filter_button">
-            <option onClick={() => updateSort('&sort=id')}>
-              상품 정렬하기
-            </option>
-            <option onClick={() => updateSort('&sort=rec')}>추천순</option>
-            <option onClick={() => updateSort('&sort=desc')}>
+            <option onClick={() => updateSort('sort=id')}>상품 정렬하기</option>
+            <option onClick={() => updateSort('sort=rec')}>추천순</option>
+            <option onClick={() => updateSort('sort=desc')}>
               가격 낮은 순
             </option>
-            <option onClick={() => updateSort('&sort=ase')}>
-              가격 높은 순
-            </option>
+            <option onClick={() => updateSort('sort=ase')}>가격 높은 순</option>
           </select>
         </div>
         <div>
@@ -177,60 +140,15 @@ function GoodsList() {
           <div className="product_list_wrap">
             <h1 className="productCount">제품 &#40;{itemList.length}&#41;</h1>
             <ul className="productList">
-              <GoodsCard CardsList={itemList} goToDetail={goToDetail} />
+              {itemList.map(item => {
+                return <GoodsCard item={item} goToDetail={goToDetail} />;
+              })}
             </ul>
           </div>
         </section>
       </section>
-      {/* <Pagination updateOffset={updateOffset} /> */}
     </section>
   );
 }
 
 export default GoodsList;
-
-// const BASE_URL = 'http://3.36.97.236:8000';
-
-// export const END_POINT = {
-//   signIn: `${BASE_URL}/users/signin`,
-//   signUp: `${BASE_URL}/users/user`,
-//   myPage: `${BASE_URL}/users/user`,
-//   productDetail: `${BASE_URL}/products`,
-//   productList: `${BASE_URL}/products`,
-//   search: `${BASE_URL}/products`,
-//   wishList: `${BASE_URL}/carts`,
-//   payment: `${BASE_URL}/orders`,
-// };
-
-// export default END_POINT;
-
-// const sectionChangeToGrill = () => {
-//   setListName('구이용');
-//   setMeatOptionPath('main_category=1');
-//   updateSubCategory('');
-//   fetch(
-//     `${BASE_URL}/goodslist/products?${meatOptionPath}&${subCategoryOption}&${sortOption}`,
-//     {
-//       method: 'GET',
-//     }
-//   )
-//     .then(res => res.json())
-//     .then(
-//       data => setItemList(data),
-//       console.log(`location:${location.search}`)
-//     );
-// };
-
-// const fetchForGrilled = () => {
-//   fetch(`/data/mock.json`)
-//     .then(res => res.json())
-//     .then(data => setItemList(data));
-// };
-
-// useEffect(() => {
-//   fetch('/data/mock.json')
-//     .then(res => res.json())
-//     .then(data => setItemList(data), console.log(listName === '구용'));
-//   //data 받을때는 메세지랑 같이 오니까 results로 넣어줄것
-//   // consoel debugging 용이니까 지워주기
-// }, []);
