@@ -8,9 +8,7 @@ import GoodsView from './pages/Goods_view/GoodsView';
 function Router() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/goodsView" element={<GoodsView />} />
-      </Routes>
+      <Routes></Routes>
       <Footer />
     </BrowserRouter>
   );
