@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
 .goods_list_page {
   position: absolute;
   top: 132px;
   width: 100%;
   padding: 36px 20px 17%;
   background-color: white;
+  font-family: 'Noto Sans KR', sans-serif;
 
   .product_list_header {
     display: flex;
