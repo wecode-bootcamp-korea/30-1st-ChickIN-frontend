@@ -5,7 +5,7 @@ function SubCategories(props) {
   return (
     <ul className="sub_category">
       <li>
-        <div onClick={props.updateSubCategory}> 전체</div>
+        <div onClick={() => props.updateSubCategory('')}> 전체</div>
       </li>
       <span class="category-span"></span>
       <li>

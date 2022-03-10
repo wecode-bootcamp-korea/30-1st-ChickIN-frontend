@@ -7,11 +7,11 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 function GoodsList() {
   const [itemList, setItemList] = useState([]);
-  const [listName, setListName] = useState('');
-  const [meatOptionPath, setMeatOptionPath] = useState('구이용');
-  const [subCategoryOption, setSubCategoryOption] = useState('');
-  const [sortOption, setSortOption] = useState('');
-  const [navigateParam, setNavigateParam] = useState('');
+  const [listName, setListName] = useState('구이용');
+  const [meatOptionPath, setMeatOptionPath] = useState('');
+  const [subCategoryOption, setSubCategoryOption] = useState(' ');
+  const [sortOption, setSortOption] = useState(' ');
+  const [navigateParam, setNavigateParam] = useState(' ');
   const navigate = useNavigate();
   // const location = useLocation();
   // const decodeuri = decodeURI(location.search);
@@ -29,7 +29,7 @@ function GoodsList() {
       // fetch('http://localhost:3000/data/mock.json')
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        console.log(data.products_list);
         setItemList(data.products_list);
       });
     //data 받을때는 메세지랑 같이 오니까 results로 넣어줄것
@@ -42,10 +42,18 @@ function GoodsList() {
 
   const updateSubCategory = subCategoryNameParam => {
     setSubCategoryOption(subCategoryNameParam);
+    setNavigateParam(
+      `products/${meatOptionPath}${subCategoryOption}${sortOption}`
+    );
+    updateUrl(navigateParam);
   };
 
   const updateSort = sortParam => {
     setSortOption(sortParam);
+    setNavigateParam(
+      `products/${meatOptionPath}${subCategoryOption}${sortOption}`
+    );
+    updateUrl(navigateParam);
   };
 
   const changeSection = nameParam => {
@@ -59,18 +67,24 @@ function GoodsList() {
     } else {
       setMeatOptionPath('?main_category=1');
     }
-  };
 
-  useEffect(() => {
     setNavigateParam(
       `products/${meatOptionPath}${subCategoryOption}${sortOption}`
     );
+    console.log(`navigateParam after click section : ${meatOptionPath}`);
     updateUrl(navigateParam);
-    console.log(navigateParam);
-  }, [meatOptionPath, subCategoryOption, sortOption]);
+  };
+
+  // useEffect(() => {
+  //   setNavigateParam(
+  //     `products/${meatOptionPath}${subCategoryOption}${sortOption}`
+  //   );
+  //   updateUrl(navigateParam);
+  //   console.log(navigateParam);
+  // }, [meatOptionPath, subCategoryOption, sortOption]);
 
   const updateUrl = changeUrl => {
-    navigate(`/${changeUrl}`);
+    navigate(changeUrl);
   };
 
   useEffect(() => {
