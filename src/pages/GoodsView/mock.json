@@ -1,0 +1,37 @@
+{
+  "result": {
+    "id": 1,
+    "name": "닭가슴살",
+    "price": 20000,
+
+    "product_image": [
+      {
+        "image_id": 11,
+        "image_url": "https://image.shutterstock.com/z/stock-photo--partially-sliced-grilled-chicken-breast-with-black-pepper-and-rock-salt-isolated-on-white-504699331.jpg"
+      },
+      {
+        "image_id": 12,
+        "image_url": "https://image.shutterstock.com/z/stock-photo-chicken-legs-527287249.jpg"
+      },
+      {
+        "image_id": 13,
+        "image_url": "https://image.shutterstock.com/image-photo/chiken-potato-other-vegetables-on-600w-534962260.jpg"
+      }
+    ],
+    "description": "넘쳐흐르는 육즙과 특수부위의 농후한 향, 쫄깃한 식감까지 담은 채끝 채끝은 한우에서 기대하는 감칠맛, 고소함 등 다양한 맛을 고루 느낄 수 있는 부위입니다. 고운 결 속 넘쳐흐르는 육즙은 물론,",
+    "option": [
+      {
+        "name": "껍질제거",
+        "price": 1000
+      },
+      {
+        "name": "시즈닝",
+        "price": 2000
+      },
+      {
+        "name": "양념소스 추가",
+        "price": 1000
+      }
+    ]
+  }
+}
