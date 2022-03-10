@@ -1,18 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import './Cart.scss';
 import CartList from './CartList';
 import PriceSum from './PriceSum';
 import { API } from '../../config';
+import './Cart.scss';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
-  const confirmOrder = () => {
-    alert('주문이 완료되었습니다!');
-  };
+
+  const confirmOrder = () => {};
+
+  // useEffect(item => {
+  //   fetch(API.order, {
+  //     method: 'POST',
+  //     body: JSON.stringify({
+  //       cart_id: item.cart_id,
+  //     }),
+  //   });
+  // },
+  //   .then(res => res.json())
+  //   .then(res => {
+  //     if (res.success) {
+  //       alert('주문이 완료되었습니다.');
+  //     }
+  //   }), []);
 
   useEffect(() => {
     fetch(API.cart, {
-      method: 'GET',
       headers: {
         Authorization: sessionStorage.getItem('token'),
       },
@@ -30,9 +43,18 @@ const Cart = () => {
         <div className="cart_container">
           <div className="cart_content_list">
             <div class="order_table">
-              {cartItems.map(item => (
-                <CartList key={item.id} item={item} />
-              ))}
+              <table>
+                <thead>
+                  <tr>
+                    <th className="th_product">상품/옵션</th>
+                    <th className="th_product_quantity">수량</th>
+                    <th className="th_price">상품 금액</th>
+                  </tr>
+                </thead>
+                {cartItems.map(item => (
+                  <CartList key={item.id} item={item} />
+                ))}
+              </table>
             </div>
           </div>
           <PriceSum items={cartItems} />

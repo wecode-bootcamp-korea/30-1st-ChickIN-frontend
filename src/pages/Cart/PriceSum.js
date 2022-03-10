@@ -1,7 +1,6 @@
 import React from 'react';
 
 const PriceSum = ({ items }) => {
-  const DELIVERY_CHARGE = 2500;
   const priceSum = items
     .map(item => item.quantity * item.product.price + item.option[0].price)
     .reduce((a, b) => a + b, 0);
@@ -38,5 +37,7 @@ const PriceSum = ({ items }) => {
     </div>
   );
 };
+
+const DELIVERY_CHARGE = 2500;
 
 export default PriceSum;

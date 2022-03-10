@@ -3,4 +3,5 @@ export const API = {
   signup: `${BASE_URL}/users/signup`,
   login: `${BASE_URL}/users/login`,
   cart: `${BASE_URL}/cart`,
+  order: `${BASE_URL}/orders`,
 };
