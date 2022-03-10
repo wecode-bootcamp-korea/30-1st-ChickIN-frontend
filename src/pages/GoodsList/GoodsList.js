@@ -1,8 +1,3 @@
-<<<<<<< HEAD:src/pages/GoodsList/GoodsList.js
-import './GoodsList.scss';
-
-||||||| merged common ancestors
-=======
 import React from 'react';
 import './GoodsList.scss';
 import GoodsCard from './Goods_card/GoodsCard';
@@ -10,7 +5,6 @@ import SubCategories from './SubCategories/SubCategories';
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
->>>>>>> master:src/pages/Goods_list/GoodsList.js
 function GoodsList() {
   const navigate = useNavigate();
   const location = useLocation();
