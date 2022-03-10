@@ -16,7 +16,7 @@ function GoodsList() {
     query_for_sort: '',
   });
 
-  const BASE_URL = 'http://10.58.6.148:8000';
+  const BASE_URL = 'http://13.125.170.124:8000';
 
   const goToDetail = productId => {
     navigate(`/goodsview/${productId}`);
@@ -58,7 +58,7 @@ function GoodsList() {
 
   const updateQuery = new_query => {
     navigate(
-      `?${new_query.query_for_meat}${new_query.query_for_kind}&${new_query.query_for_sort}`
+      `?${new_query.query_for_meat}&${new_query.query_for_kind}&${new_query.query_for_sort}`
     );
   };
 
@@ -77,8 +77,8 @@ function GoodsList() {
           <select className="filter_button" onChange={updateSort}>
             <option value="sort=id">상품 정렬하기</option>
             <option value="sort=rec">추천순</option>
-            <option value="sort=desc">가격 낮은 순</option>
-            <option value="sort=ase">가격 높은 순</option>
+            <option value="sort=asc">가격 낮은 순</option>
+            <option value="sort=desc">가격 높은 순</option>
           </select>
         </div>
         <div>
