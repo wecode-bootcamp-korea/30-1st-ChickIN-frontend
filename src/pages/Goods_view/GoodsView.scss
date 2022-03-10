@@ -31,23 +31,10 @@
           .product_price_wrapper {
             padding-bottom: 15px;
 
-            .product_discount {
-              .discount_price {
-                padding-right: 8px;
-                font-weight: bold;
-                font-size: 24px;
-                color: blue;
-              }
-
-              .old_price {
-                font-size: 24px;
-                text-decoration-line: line-through;
-                color: #b4b4b4;
-              }
-            }
-            .product_new_price {
+            .product_price {
               font-size: 28px;
               color: #333333;
+              font-weight: 600;
             }
           }
         }
@@ -55,7 +42,15 @@
         .product_description {
           border-top: 2px solid black;
           border-bottom: 2px solid black;
-          padding: 15px 0 15px 0;
+          padding: 30px;
+
+          .showMoreButton {
+            button {
+              border: none;
+              background-color: inherit;
+              color: blue;
+            }
+          }
         }
 
         .product_option {

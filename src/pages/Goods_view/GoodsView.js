@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import MainOptionsBox from './Main_options_box/MainOptionsBox';
 import SubOptionsBox from './Sub_options_box/SubOptionsBox';
 import './GoodsView.scss';
-import './mock.json';
 import { API } from '../../config';
 
 const OPTION_OBJECT = {
@@ -10,6 +9,7 @@ const OPTION_OBJECT = {
   시즈닝: 2000,
   '양념소스 추가': 1000,
 };
+
 function priceToString(price) {
   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
@@ -18,11 +18,12 @@ function GoodsView() {
   const [selectedOptions, setSelectedOptions] = useState();
   const [resultPrice, setResultPrice] = useState(0);
   const [productData, setProductData] = useState(null);
-  // const intNumber = parseInt(productData.price);
+  const [showMoreButton, setShowMoreButton] = useState(false);
+
   // const params = useParams();
   useEffect(() => {
     // fetch('http://localhost:3000/data/mock.json')
-    // fetch('http://10.58.7.0:8000/products/1')
+    // fetch('http://10.58.7.79:8000/products/1');
     fetch(API.goodsview)
       .then(res => res.json())
       // .then(data => console.log(data));
@@ -46,18 +47,28 @@ function GoodsView() {
               </div>
               <div className="detail_right">
                 <div className="detail_information">
-                  <div className="detail_information_title">
+                  <h1 className="detail_information_title">
                     {`${productData.name}`}
-                  </div>
+                  </h1>
                   <div className="detail_information_wrapper">
                     <div className="product_price_wrapper">
-                      <div className="product_new_price">
+                      <div className="product_price">
                         {priceToString(parseInt(productData.price))} 원
                       </div>
                     </div>
                   </div>
                   <div className="product_description">
-                    {`${productData.description}`}
+                    {showMoreButton
+                      ? `${productData.description}`
+                      : `${`${productData.description}`.substring(0, 200)}`}
+                    <div className="showMoreButton">
+                      <button
+                        className="btn"
+                        onClick={() => setShowMoreButton(!showMoreButton)}
+                      >
+                        더 알아보기 &#8897;
+                      </button>
+                    </div>
                   </div>
                   <div className="product_option">
                     <div className="choice_number_option">
