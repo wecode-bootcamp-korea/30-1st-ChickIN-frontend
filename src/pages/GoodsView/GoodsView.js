@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { useNavigate } from 'react-router';
+import { useLocation } from 'react-router';
 import { API } from '../../config';
 import MainOptionsBox from './Main_options_box/MainOptionsBox';
 import SubOptionsBox from './Sub_options_box/SubOptionsBox';
@@ -48,6 +49,17 @@ function GoodsView() {
     // fetch('http://localhost:3000/data/mock.json')
     // fetch('http://10.58.7.79:8000/products/1');
     fetch(API.goodsview)
+      .then(res => res.json())
+      // .then(data => console.log(data));
+      .then(data => setProductData(data.data));
+  }, []);
+
+  const location = useLocation();
+  const id = location.search.split('=')[1];
+  useEffect(() => {
+    // fetch('http://localhost:3000/data/mock.json')
+    // fetch('http://10.58.7.79:8000/products/1');
+    fetch(`${API}.goodsview/${id}`)
       .then(res => res.json())
       // .then(data => console.log(data));
       .then(data => setProductData(data.data));
