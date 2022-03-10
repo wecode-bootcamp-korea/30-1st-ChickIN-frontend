@@ -5,14 +5,14 @@
 }
 @mixin th_font_style {
   font-family: 'Noto Sans KR', sans-serif;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .cart {
   @include font-family;
 
   .content_box {
-    margin-bottom: 50px;
+    margin-bottom: 150px;
 
     .content_title {
       display: flex;
@@ -116,6 +116,7 @@
                   border-bottom: 1px solid #e0e0e0;
                   display: flex;
                   justify-content: center;
+                  flex-direction: column;
                   align-items: center;
 
                   .option_content {

@@ -1,38 +1,42 @@
 import React from 'react';
 
-function CartList({ item }) {
+const CartList = ({ item }) => {
+  const { quantity, product } = item;
   return (
     <tbody>
       <tr>
         <td className="product">
           <div className="product_content">
-            <div className="product_image" />
-            <div className="product_name">{item.product.name}</div>
+            <img className="product_image" src={product.thumbnail} />
+            <div className="product_name">{product.name}</div>
+            {/* <div className="option">
+              <div className="option_name">{option[0].name}</div>
+              <div className="option_quantity">{option[0].quantity}개</div>
+              <div className="option_price">{option[0].price}원</div>
+            </div> */}
           </div>
         </td>
         <td className="product_quantity">
-          <p>{item.quantity}개</p>
+          <p>{quantity}개</p>
         </td>
         <td className="product_price">
-          <p>{item.product.price * item.quantity}원</p>
+          <p>{product.price * quantity}원</p>
         </td>
-      </tr>
-      <tr>
-        <td className="option">
+
+        {/* <td className="option">
           <div className="option_content">
-            <div className="option_image" />
-            <div className="option_name">{item.option[0].name}</div>
+            <div className="option_name">{option.name}</div>
           </div>
         </td>
         <td className="option_quantity">
-          <p>1개</p>
+          <p>{option.quantity}개</p>
         </td>
         <td className="option_price">
-          <p>{item.option[0].price}원</p>
-        </td>
+          <p>{option.price}원</p>
+        </td> */}
       </tr>
     </tbody>
   );
-}
+};
 
 export default CartList;

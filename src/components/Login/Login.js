@@ -1,8 +1,3 @@
-<<<<<<< Updated upstream
-function Login() {
-  return <></>;
-}
-=======
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { API } from '../../config';
@@ -10,17 +5,16 @@ import './Login.scss';
 
 const Login = () => {
   const navigate = useNavigate();
+
   const [idValue, setIdValue] = useState('');
   const [pwValue, setPwValue] = useState('');
 
   const updateId = e => {
     setIdValue(e.target.value);
   };
-
   const updatePw = e => {
     setPwValue(e.target.value);
   };
-
   const fetchLogin = e => {
     e.preventDefault();
 
@@ -33,7 +27,9 @@ const Login = () => {
     })
       .then(response => response.json())
       .then(result => {
+        console.log(result);
         if (result.message === 'SUCCESS') {
+          localStorage.setItem('token', result.access_token);
           alert('로그인 성공!');
           navigate('/Main');
         } else {
@@ -41,7 +37,6 @@ const Login = () => {
         }
       });
   };
-
   return (
     <div className="login">
       <div className="login_header">
@@ -83,6 +78,4 @@ const Login = () => {
     </div>
   );
 };
->>>>>>> Stashed changes
-
 export default Login;

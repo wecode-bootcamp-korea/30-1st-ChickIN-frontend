@@ -7,27 +7,28 @@ import './Cart.scss';
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
 
-  const confirmOrder = () => {};
-
-  // useEffect(item => {
+  // const clickBtn = () => {
   //   fetch(API.order, {
   //     method: 'POST',
+  //     headers: {
+  //       Authorization: sessionStorage.getItem('token'),
+  //     },
   //     body: JSON.stringify({
-  //       cart_id: item.cart_id,
+  //       cart_id: cartItems.id,
   //     }),
-  //   });
-  // },
-  //   .then(res => res.json())
-  //   .then(res => {
-  //     if (res.success) {
-  //       alert('주문이 완료되었습니다.');
-  //     }
-  //   }), []);
+  //   })
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       if (res.success) {
+  //         alert('주문이 완료되었습니다.');
+  //       }
+  //     });
+  // };
 
   useEffect(() => {
     fetch(API.cart, {
       headers: {
-        Authorization: sessionStorage.getItem('token'),
+        Authorization: localStorage.getItem('token'),
       },
     })
       .then(res => res.json())
@@ -42,7 +43,7 @@ const Cart = () => {
         </div>
         <div className="cart_container">
           <div className="cart_content_list">
-            <div class="order_table">
+            <div className="order_table">
               <table>
                 <thead>
                   <tr>
@@ -76,7 +77,7 @@ const Cart = () => {
             </div>
           </div>
           <div className="button_wrap">
-            <button onClick={confirmOrder}>주문하기</button>
+            <button>주문하기</button>
           </div>
         </div>
       </div>

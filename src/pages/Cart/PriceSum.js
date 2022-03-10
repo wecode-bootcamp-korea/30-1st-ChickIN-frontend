@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const PriceSum = ({ items }) => {
-  const priceSum = items
-    .map(item => item.quantity * item.product.price + item.option[0].price)
-    .reduce((a, b) => a + b, 0);
+  const priceSum = Number(
+    items
+      .map(item => item.quantity * item.product.price)
+      .reduce((a, b) => a + b, 0)
+  );
 
   return (
     <div className="price_sum">
