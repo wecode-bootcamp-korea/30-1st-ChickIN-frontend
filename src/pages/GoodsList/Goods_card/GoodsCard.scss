@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 .product {
   display: flex;
   flex-direction: column;
@@ -8,6 +9,7 @@
   border: 1px solid #eaeaea;
   cursor: pointer;
   overflow: hidden;
+  font-family: 'Noto Sans KR', sans-serif;
 
   .product_img_Wrap {
     width: 100%;
