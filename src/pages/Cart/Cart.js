@@ -7,6 +7,10 @@ import './Cart.scss';
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
 
+  const order = () => {
+    alert('주문이 완료되었습니다.');
+  };
+
   // const clickBtn = () => {
   //   fetch(API.order, {
   //     method: 'POST',
@@ -77,7 +81,7 @@ const Cart = () => {
             </div>
           </div>
           <div className="button_wrap">
-            <button>주문하기</button>
+            <button onClick={order}>주문하기</button>
           </div>
         </div>
       </div>

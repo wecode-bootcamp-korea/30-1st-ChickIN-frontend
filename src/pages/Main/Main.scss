@@ -1,0 +1,12 @@
+.main {
+  object-fit: cover;
+  width: 100%;
+
+  .banner {
+    background-image: url('../../assets/Banner.png');
+    width: 2000px;
+    height: 500px;
+    background-size: cover;
+    margin-top: 200px;
+  }
+}
