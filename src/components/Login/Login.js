@@ -11,11 +11,9 @@ const Login = () => {
   const updateId = e => {
     setIdValue(e.target.value);
   };
-
   const updatePw = e => {
     setPwValue(e.target.value);
   };
-
   const fetchLogin = e => {
     e.preventDefault();
 
@@ -29,6 +27,7 @@ const Login = () => {
       .then(response => response.json())
       .then(result => {
         if (result.message === 'SUCCESS') {
+          localStorage.setItem('token', result.access_token);
           alert('로그인 성공!');
           navigate('/Main');
         } else {
@@ -36,7 +35,6 @@ const Login = () => {
         }
       });
   };
-
   return (
     <div className="login">
       <div className="login_header">
@@ -78,5 +76,4 @@ const Login = () => {
     </div>
   );
 };
-
 export default Login;

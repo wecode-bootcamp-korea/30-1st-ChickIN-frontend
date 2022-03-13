@@ -9,7 +9,6 @@ import Footer from './components/Footer/Footer';
 function Router() {
   return (
     <BrowserRouter>
-      <Nav />
       <Routes>
         <Route path="/main" element={<Main />} />
         <Route path="/login" element={<Login />} />
@@ -19,5 +18,4 @@ function Router() {
     </BrowserRouter>
   );
 }
-
 export default Router;
