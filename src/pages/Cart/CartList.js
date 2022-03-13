@@ -7,7 +7,11 @@ const CartList = ({ item }) => {
       <tr>
         <td className="product">
           <div className="product_content">
-            <img className="product_image" src={product.thumbnail} />
+            <img
+              className="product_image"
+              alt="product"
+              src={product.thumbnail}
+            />
             <div className="product_name">{product.name}</div>
             {/* <div className="option">
               <div className="option_name">{option[0].name}</div>

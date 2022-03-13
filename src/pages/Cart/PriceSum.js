@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 const PriceSum = ({ items }) => {
   const priceSum = Number(

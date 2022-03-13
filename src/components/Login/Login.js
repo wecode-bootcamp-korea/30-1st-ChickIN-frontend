@@ -5,7 +5,6 @@ import './Login.scss';
 
 const Login = () => {
   const navigate = useNavigate();
-
   const [idValue, setIdValue] = useState('');
   const [pwValue, setPwValue] = useState('');
 

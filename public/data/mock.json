@@ -1,0 +1,50 @@
+[
+  {
+    "product_id": 1,
+    "product_name": "닭가슴살 더블팩(100g * 2팩)",
+    "product_img": "https://image.shutterstock.com/z/stock-photo--partially-sliced-grilled-chicken-breast-with-black-pepper-and-rock-salt-isolated-on-white-504699331.jpg",
+    "product_price": "61,200원"
+  },
+  {
+    "product_id": 2,
+    "product_name": "닭다리 더블팩(100g * 2팩)",
+    "product_img": "https://image.shutterstock.com/z/stock-photo-chicken-legs-527287249.jpg",
+    "product_price": "80,200원"
+  },
+  {
+    "product_id": 3,
+    "product_name": "닭다리 더블팩(100g * 2팩)",
+    "product_img": "https://image.shutterstock.com/z/stock-photo-chicken-legs-527287249.jpg",
+    "product_price": "80,200원"
+  },
+  {
+    "product_id": 4,
+    "product_name": "닭다리 더블팩(100g * 2팩)",
+    "product_img": "https://image.shutterstock.com/z/stock-photo-chicken-legs-527287249.jpg",
+    "product_price": "80,200원"
+  },
+  {
+    "product_id": 5,
+    "product_name": "닭다리 더블팩(100g * 2팩)",
+    "product_img": "https://image.shutterstock.com/z/stock-photo-chicken-legs-527287249.jpg",
+    "product_price": "80,200원"
+  },
+  {
+    "product_id": 6,
+    "product_name": "닭다리 더블팩(100g * 2팩)",
+    "product_img": "https://image.shutterstock.com/z/stock-photo-chicken-legs-527287249.jpg",
+    "product_price": "80,200원"
+  },
+  {
+    "product_id": 7,
+    "product_name": "닭다리 더블팩(100g * 2팩)",
+    "product_img": "https://image.shutterstock.com/z/stock-photo-chicken-legs-527287249.jpg",
+    "product_price": "80,200원"
+  },
+  {
+    "product_id": 8,
+    "product_name": "닭다리 더블팩(100g * 2팩)",
+    "product_img": "https://image.shutterstock.com/z/stock-photo-chicken-legs-527287249.jpg",
+    "product_price": "80,200원"
+  }
+]

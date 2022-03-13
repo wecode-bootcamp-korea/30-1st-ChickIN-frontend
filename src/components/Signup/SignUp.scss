@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+@mixin box {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #dbdbdb;
+  width: 715px;
+}
+
+@mixin input {
+  width: 515px;
+  border: 1px solid #d0d0d0;
+  height: 35px;
+  padding: 0 10px;
+  background: #fff;
+}
+
+@mixin box_left {
+  background-color: #f9f9f9;
+  width: 165px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin box_left_h2 {
+  background-color: #f9f9f9;
+  width: 165px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: bold;
+}
+
+@mixin button_default {
+  width: 203px;
+  height: 55px;
+  line-height: 53px;
+  font-size: 14px;
+  border: 0.9px solid black;
+  cursor: pointer;
+  margin-top: 50px;
+}
+
+.signup {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .content {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      .top {
+        padding: 30px 0;
+        border-bottom: 1px solid #dbdbdb;
+        width: 1000px;
+        display: flex;
+        justify-content: center;
+
+        h2 {
+          width: 100%;
+          display: flex;
+          justify-content: left;
+          padding: 0 0 0 20px;
+          color: #000;
+          font-size: 24px;
+          font-weight: bold;
+          font-family: 'Noto Sans KR', sans-serif;
+        }
+      }
+      .join {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-left: 150px;
+        margin-top: 100px;
+
+        .join_info {
+          font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .essential_info {
+          font-family: 'Noto Sans KR', sans-serif;
+          font-size: 13px;
+        }
+      }
+      .button {
+        display: flex;
+        justify-content: center;
+
+        .cancel {
+          @include button_default();
+          background-color: #fff;
+        }
+
+        .button_activate {
+          @include button_default();
+          background-color: #000;
+          color: #fff;
+          font-weight: bold;
+        }
+
+        .invalid {
+          @include button_default();
+          opacity: 0.3;
+          border: 0.9px solid black;
+          cursor: disabled;
+        }
+      }
+      .signup_form {
+        display: flex;
+        justify-content: center;
+
+        .signup_content {
+          .email_box {
+            margin-top: 20px;
+            border-top: 1px solid #000;
+            @include box;
+
+            .email_left {
+              @include box_left;
+              h3 {
+                @include box_left_h2;
+              }
+            }
+            .email_right {
+              padding: 12px 20px;
+
+              .email_input {
+                @include input();
+              }
+            }
+          }
+          .pw_box {
+            @include box;
+
+            .pw_left {
+              @include box_left;
+
+              h3 {
+                @include box_left_h2;
+              }
+            }
+            .pw_right {
+              padding: 12px 20px;
+
+              .pw_input {
+                @include input();
+              }
+            }
+          }
+          .pw_confirm_box {
+            @include box;
+
+            .pw_confirm_left {
+              @include box_left;
+
+              h3 {
+                @include box_left_h2;
+              }
+            }
+            .pw_confirm_right {
+              padding: 12px 20px;
+
+              .pw_confirm_input {
+                @include input();
+              }
+            }
+          }
+          .username_box {
+            @include box;
+
+            .username_left {
+              @include box_left;
+
+              h3 {
+                @include box_left_h2;
+              }
+            }
+            .username_right {
+              padding: 12px 20px;
+
+              .username_input {
+                @include input();
+              }
+            }
+          }
+          .phone_number_box {
+            @include box;
+
+            .phone_number_left {
+              @include box_left;
+
+              h3 {
+                @include box_left_h2;
+              }
+            }
+            .phone_number_right {
+              padding: 12px 20px;
+
+              .phone_number_input {
+                @include input();
+              }
+            }
+          }
+          .address_box {
+            @include box;
+
+            .address_left {
+              @include box_left;
+
+              h3 {
+                @include box_left_h2;
+              }
+            }
+            .address_right {
+              padding: 12px 20px;
+
+              .address_input {
+                @include input();
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
