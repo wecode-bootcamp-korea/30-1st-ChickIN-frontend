@@ -26,7 +26,6 @@ const Login = () => {
     })
       .then(response => response.json())
       .then(result => {
-        console.log(result);
         if (result.message === 'SUCCESS') {
           localStorage.setItem('token', result.access_token);
           alert('로그인 성공!');
