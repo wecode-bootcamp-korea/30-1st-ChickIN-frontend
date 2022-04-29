@@ -1,8 +1,9 @@
-// const BASE_URL = 'http://10.58.7.79:8000';
-const BASE_URL = 'http://13.125.170.124:8000';
+const BASE_URL = 'http://10.58.6.148:8000';
 export const API = {
   signup: `${BASE_URL}/users/signup`,
   login: `${BASE_URL}/users/login`,
   cart: `${BASE_URL}/carts`,
-  // goodsview: `${BASE_URL}/products`,
+  order: `${BASE_URL}/orders`,
+  goodsList: `${BASE_URL}/carts`,
+  goodsView: `${BASE_URL}/products/1`,
 };
