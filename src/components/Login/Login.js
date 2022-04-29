@@ -8,6 +8,10 @@ const Login = () => {
   const [idValue, setIdValue] = useState('');
   const [pwValue, setPwValue] = useState('');
 
+  const signUp = () => {
+    navigate('/SignUp');
+  };
+
   const updateId = e => {
     setIdValue(e.target.value);
   };
@@ -40,7 +44,6 @@ const Login = () => {
   return (
     <div className="login">
       <div className="login_header">
-        <div className="login_button_close" />
         <div className="login_title">로그인 및 회원가입</div>
       </div>
       <div className="login_body">
@@ -70,7 +73,7 @@ const Login = () => {
               로그인 하기
             </button>
           </div>
-          <p className="sign_up_button">
+          <p className="sign_up_button" onClick={signUp}>
             ChickIN 계정이 없으신가요? 계정을 만드세요!
           </p>
         </form>

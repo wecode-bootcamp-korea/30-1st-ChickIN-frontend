@@ -4,20 +4,21 @@
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid #dbdbdb;
-  width: 715px;
+  width: 1005px;
 }
 
 @mixin input {
-  width: 515px;
+  width: 805px;
   border: 1px solid #d0d0d0;
-  height: 35px;
+  height: 70px;
   padding: 0 10px;
   background: #fff;
+  font-size: 25px;
 }
 
 @mixin box_left {
   background-color: #f9f9f9;
-  width: 165px;
+  width: 305px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,16 +30,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
+  font-size: 20px;
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: bold;
 }
 
 @mixin button_default {
-  width: 203px;
-  height: 55px;
+  width: 400px;
+  height: 80px;
   line-height: 53px;
-  font-size: 14px;
+  font-size: 23px;
   border: 0.9px solid black;
   cursor: pointer;
   margin-top: 50px;
@@ -60,6 +61,7 @@
       flex-direction: column;
 
       .top {
+        margin-bottom: 80px;
         padding: 30px 0;
         border-bottom: 1px solid #dbdbdb;
         width: 1000px;
@@ -81,16 +83,18 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        padding-left: 150px;
+        padding-left: 30px;
         margin-top: 100px;
 
         .join_info {
           font-family: 'Noto Sans KR', sans-serif;
+          font-size: 30px;
+          padding-right: 10px;
         }
 
         .essential_info {
           font-family: 'Noto Sans KR', sans-serif;
-          font-size: 13px;
+          font-size: 25px;
         }
       }
       .button {

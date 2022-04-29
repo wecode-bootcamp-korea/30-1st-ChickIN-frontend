@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
+// import { useParams } from 'react-router';
 import { useNavigate } from 'react-router';
 import { useLocation } from 'react-router';
-import { API } from '../../config';
+// import { API } from '../../config';
 import MainOptionsBox from './Main_options_box/MainOptionsBox';
 import SubOptionsBox from './Sub_options_box/SubOptionsBox';
 import './GoodsView.scss';
@@ -17,11 +17,13 @@ function GoodsView() {
   const [resultPrice, setResultPrice] = useState(0);
   const [productData, setProductData] = useState(null);
   const [showMoreButton, setShowMoreButton] = useState(false);
-  const params = useParams();
+  const BASE_URL = 'http://13.125.170.124:8000';
   const navigate = useNavigate();
+  const location = useLocation();
+  const id = location.search.split('=')[1];
 
   const CartButtonHandler = () => {
-    fetch(API.carts, {
+    fetch(`${BASE_URL}/carts/id`, {
       method: 'POST',
       headers: {
         Authorization: localStorage.getItem('token'),
@@ -42,24 +44,11 @@ function GoodsView() {
   };
 
   const orderNow = () => {
-    alert('바로 구매 완료');
+    alert('주문이 완료되었습니다.');
   };
 
   useEffect(() => {
-    // fetch('http://localhost:3000/data/mock.json')
-    // fetch('http://10.58.7.79:8000/products/1');
-    fetch(API.goodsview)
-      .then(res => res.json())
-      // .then(data => console.log(data));
-      .then(data => setProductData(data.data));
-  }, []);
-
-  const location = useLocation();
-  const id = location.search.split('=')[1];
-  useEffect(() => {
-    // fetch('http://localhost:3000/data/mock.json')
-    // fetch('http://10.58.7.79:8000/products/1');
-    fetch(`${API}.goodsview/${id}`)
+    fetch(`${BASE_URL}/products/1`)
       .then(res => res.json())
       // .then(data => console.log(data));
       .then(data => setProductData(data.data));
@@ -99,7 +88,7 @@ function GoodsView() {
                   <div className="product_description">
                     {showMoreButton
                       ? `${productData.description}`
-                      : `${`${productData.description}`.substring(0, 200)}`}
+                      : `${`${productData.description}`.substring(0, 150)}`}
                     <div className="showMoreButton">
                       <button
                         className="btn"
@@ -134,18 +123,6 @@ function GoodsView() {
                             </option>
                           );
                         })}
-                        {/* <option value="0">
-                          {`${productData.option[0].name}`}
-                          {`${productData.option[0].price}` + '원'}
-                        </option>
-                        <option value="1">
-                          {`${productData.option[1].name}`}
-                          {`${productData.option[1].price}` + '원'}
-                        </option>
-                        <option value="2">
-                          {`${productData.option[2].name}`}
-                          {`${productData.option[2].price}` + '원'}
-                        </option> */}
                       </select>
                     </div>
                     <MainOptionsBox
