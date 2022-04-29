@@ -1,7 +1,7 @@
+// const BASE_URL = 'http://10.58.7.79:8000';
 const BASE_URL = 'http://13.125.170.124:8000';
-  const navigate = useNavigate();
-  const location = useLocation();
-  const id = location.search.split('=')[1];
-
-  const CartButtonHandler = () => {
-    fetch(`${BASE_URL}/carts/id`, {
+export const API = {
+  signup: `${BASE_URL}/users/signup`,
+  login: `${BASE_URL}/users/login`,
+  goodsview: `${BASE_URL}/products/1`,
+};
