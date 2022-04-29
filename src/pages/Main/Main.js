@@ -1,11 +1,5 @@
-import './Main.scss';
+import Nav from '../../components/Nav/Nav';
 
-const Main = () => {
-  return (
-    <div className="main">
-      <div className="banner" alt="banner" />
-      <div className="announce" />
-    </div>
-  );
-};
-export default Main;
+function Main() {
+  return <></>;
+}
