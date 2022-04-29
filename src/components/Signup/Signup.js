@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { API } from '../../../src/config';
-import './Signup.scss';
+// import './Signup.scss';
+import './SignUp.scss';
 
 const passwordReg = /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 const emailReg =
@@ -9,6 +10,11 @@ const emailReg =
 
 const SignUp = () => {
   const navigate = useNavigate();
+
+  const gotoLogin = () => {
+    navigate('../Login');
+  };
+
   const [inputValue, setInputValue] = useState({
     email: '',
     password: '',
@@ -210,7 +216,9 @@ const SignUp = () => {
             </form>
           </div>
           <div className="button">
-            <button className="cancel">취소</button>
+            <button className="cancel" onClick={gotoLogin}>
+              취소
+            </button>
             <button
               className={isValidForm ? 'button_activate' : 'invalid'}
               disabled={!isValidForm}

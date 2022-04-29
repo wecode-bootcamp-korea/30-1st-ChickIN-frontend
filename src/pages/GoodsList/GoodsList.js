@@ -16,19 +16,19 @@ function GoodsList() {
     query_for_sort: '',
   });
 
-  const BASE_URL = 'http://13.125.170.124:8000';
+  // const BASE_URL = 'http://13.125.170.124:8000';
 
   const goToDetail = productId => {
-    navigate(`/goodsview/${productId}`);
+    navigate(`/products/${productId}`);
   };
 
-  useEffect(() => {
-    fetch(`${BASE_URL}/products`)
-      .then(res => res.json())
-      .then(res => {
-        setItemList(res.products_list);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(`${BASE_URL}/products`)
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       setItemList(res.products_list);
+  //     });
+  // }, []);
 
   const updateSubCategory = new_kind => {
     const new_query = queryData;
@@ -62,12 +62,11 @@ function GoodsList() {
     );
   };
 
-  useEffect(() => {
-    console.log('location.search', location.search);
-    fetch(`${BASE_URL}/products${location.search}`)
-      .then(res => res.json())
-      .then(res => setItemList(res.products_list));
-  }, [location.search]);
+  // useEffect(() => {
+  //   fetch(`${BASE_URL}/products${location.search}`)
+  //     .then(res => res.json())
+  //     .then(res => setItemList(res.products_list));
+  // }, [location.search]);
 
   return (
     <section className="goods_list_page">
